@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kontak — Sentra Niaga Universal</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet" />
+  <style>
+    * { font-family: 'Atkinson Hyperlegible', sans-serif; }
+    html { scroll-behavior: smooth; }
+    #navbar { transition: background 0.4s, box-shadow 0.4s; }
+    #navbar.scrolled { background: rgba(255,255,255,0.95); backdrop-filter: blur(12px); box-shadow: 0 2px 24px rgba(0,93,206,0.08); }
+    .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .contact-input {
+      width: 100%; padding: 14px 18px; border: 1.5px solid #E4F5FE; border-radius: 12px;
+      font-family: 'Atkinson Hyperlegible', sans-serif; font-size: 0.9rem;
+      transition: border-color 0.3s, box-shadow 0.3s; outline: none; background: white;
+    }
+    .contact-input:focus { border-color: #005DCE; box-shadow: 0 0 0 3px rgba(0,93,206,0.1); }
+    .contact-input::placeholder { color: #aab; }
+    label { display: block; font-size: 0.8rem; font-weight: 700; margin-bottom: 6px; color: #333; letter-spacing: 0.05em; text-transform: uppercase; }
+    .info-card { background: white; border-radius: 16px; padding: 24px; border: 1.5px solid #E4F5FE; transition: transform 0.3s, box-shadow 0.3s; }
+    .info-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,93,206,0.1); }
+    #progress-bar { position: fixed; top: 0; left: 0; height: 3px; background: linear-gradient(90deg, #005DCE, #F3CF31); z-index: 9999; }
+    #mobile-menu { display: none; }
+    #mobile-menu.open { display: flex; }
+    .img-placeholder { background: linear-gradient(135deg, #E4F5FE 0%, #79AFFF 100%); display: flex; align-items: center; justify-content: center; color: #005DCE; position: relative; overflow: hidden; }
+    .img-placeholder::after { content:''; position:absolute; inset:0; background: repeating-linear-gradient(45deg,transparent,transparent 10px,rgba(0,93,206,0.04) 10px,rgba(0,93,206,0.04) 20px); }
+  </style>
+</head>
+<body class="bg-white text-gray-900 overflow-x-hidden">
+
+<div id="progress-bar" style="width:0%"></div>
+
+<!-- NAVBAR -->
+<nav id="navbar" class="fixed top-0 left-0 right-0 z-50 px-6 py-4 bg-white shadow-sm">
+  <div class="max-w-7xl mx-auto flex items-center justify-between">
+    <a href="index.html" class="flex items-center gap-3">
+      <img src="photos\logo.png" alt="Logo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" class="h-10 w-auto"/>
+      <span style="display:none" class="items-center gap-2">
+        <span class="text-xl font-bold" style="color:#005DCE">SENTRA</span>
+        <span class="text-xl font-bold text-gray-800">NIAGA</span>
+      </span>
+    </a>
+    <div class="hidden md:flex items-center gap-8 text-sm font-bold text-gray-700">
+      <a href="index.html" class="hover:text-[#005DCE] transition-colors">Beranda</a>
+      <a href="about.html" class="hover:text-[#005DCE] transition-colors">Tentang Kami</a>
+      <a href="layanan.html" class="hover:text-[#005DCE] transition-colors">Layanan</a>
+      
+      <a href="kontak.html" class="px-5 py-2.5 rounded-full text-white text-sm font-bold" style="background:#005DCE">Hubungi Kami</a>
+    </div>
+    <button class="md:hidden p-2" onclick="document.getElementById('mobile-menu').classList.toggle('open')">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#005DCE" stroke-width="2.5" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </div>
+  <div id="mobile-menu" class="flex-col gap-4 px-6 pt-4 pb-6 md:hidden bg-white shadow-xl rounded-b-2xl mt-2">
+    <a href="index.html" class="font-bold text-gray-700">Beranda</a>
+    <a href="about.html" class="font-bold text-gray-700">Tentang Kami</a>
+    <a href="layanan.html" class="font-bold text-gray-700">Layanan</a>
+    <a href="klien.html" class="font-bold text-gray-700">Klien</a>
+    <a href="kontak.html" class="px-5 py-2.5 rounded-full text-white font-bold text-center" style="background:#005DCE">Hubungi Kami</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="pt-32 pb-20 px-6 relative overflow-hidden" style="background:linear-gradient(135deg,#005DCE 0%,#079844 100%)">
+  <div class="max-w-4xl mx-auto text-center relative z-10">
+    <p class="text-xs font-bold uppercase tracking-widest mb-4 text-blue-200">Kami Siap Membantu</p>
+    <h1 class="text-5xl font-bold text-white mb-6 leading-tight">Hubungi Kami</h1>
+    <p class="text-xl text-blue-100 max-w-xl mx-auto leading-relaxed">
+      Diskusikan kebutuhan dapur Anda bersama tim kami dan temukan sistem distribusi yang lebih efisien, stabil, dan terkontrol.
+    </p>
+  </div>
+</section>
+
+<!-- CONTACT SECTION -->
+<section class="py-24 px-6 bg-white">
+  <div class="max-w-7xl mx-auto">
+    <div class="grid lg:grid-cols-2 gap-16">
+
+      <!-- Contact Info -->
+      <div class="reveal">
+        <p class="text-xs font-bold uppercase tracking-widest mb-3" style="color:#005DCE">Info Kontak</p>
+        <h2 class="text-4xl font-bold mb-8 leading-tight">Mulai Percakapan<br/>Bersama Kami</h2>
+
+        <div class="space-y-4 mb-10">
+          <!-- WhatsApp -->
+          <a href="https://wa.me/6288971916535" target="_blank" class="info-card flex items-center gap-5">
+            <div class="w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0" style="background:#079844">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+            </div>
+            <div>
+              <div class="font-bold">WhatsApp</div>
+              <div class="text-sm text-gray-500">088971916535</div>
+              <div class="text-xs font-bold mt-1" style="color:#079844">Chat Sekarang</div>
+            </div>
+            <svg class="ml-auto" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#005DCE" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+          </a>
+
+          <!-- Email -->
+          <a href="mailto:sentrauniversaltrade@gmail.com" class="info-card flex items-center gap-5">
+            <div class="w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0" style="background:#005DCE">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <div>
+              <div class="font-bold">Email</div>
+              <div class="text-sm text-gray-500">sentrauniversaltrade@gmail.com</div>
+              <div class="text-xs font-bold mt-1" style="color:#005DCE">Kirim Email</div>
+            </div>
+            <svg class="ml-auto" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#005DCE" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+          </a>
+
+          <!-- Address -->
+          <div class="info-card flex items-start gap-5">
+            <div class="w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0" style="background:#E4F5FE">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#005DCE" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div>
+              <div class="font-bold">Alamat</div>
+              <div class="text-sm text-gray-500 leading-relaxed">Jl. Sastra Kencana 1<br/>BSD City, Tangerang Selatan</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Google Maps -->
+        <div class="rounded-2xl overflow-hidden h-[220px]">
+        <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3965.503693647256!2d106.68971497399104!3d-6.328716993660833!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69e51135a417a9%3A0xf0218f67edf64df0!2sJl.%20Sastra%20Kencana%201%2C%20Ciater%2C%20Kec.%20Serpong%2C%20Kota%20Tangerang%20Selatan%2C%20Banten%2015310!5e0!3m2!1sen!2sid!4v1772723616904!5m2!1sen!2sid"
+            class="w-full h-full border-0"
+            loading="lazy"
+            allowfullscreen
+            referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+        </div>
+      </div>
+
+      <!-- Contact Form -->
+      <div class="reveal" style="transition-delay:0.2s">
+        <div class="p-8 rounded-3xl shadow-2xl" style="background:#F8FBFF; border: 1.5px solid #E4F5FE">
+          <h3 class="text-2xl font-bold mb-2">Kirim Pesan</h3>
+          <p class="text-gray-500 text-sm mb-8">Isi form di bawah dan klik kirim pesan, pesan anda akan langsung kami teruskan ke Whatsapp. tim kami akan menghubungi Anda dalam 1x24 jam.</p>
+
+          <div class="space-y-5" id="contact-form">
+            <div class="grid grid-cols-2 gap-4">
+              <div>
+                <label for="nama">Nama</label>
+                <input type="text" id="nama" class="contact-input" placeholder="Nama lengkap Anda" />
+              </div>
+              <div>
+                <label for="jabatan">Jabatan</label>
+                <input type="text" id="jabatan" class="contact-input" placeholder="Kepala Dapur, dll." />
+              </div>
+            </div>
+            <div>
+              <label for="instansi">Nama Dapur / Instansi</label>
+              <input type="text" id="instansi" class="contact-input" placeholder="Nama dapur atau program Anda" />
+            </div>
+            <div class="grid grid-cols-2 gap-4">
+              <div>
+                <label for="telepon">No. Telepon / WA</label>
+                <input type="text" id="telepon" class="contact-input" placeholder="08xxxxxxxxxx" />
+              </div>
+              <div>
+                <label for="email">Email</label>
+                <input type="email" id="email" class="contact-input" placeholder="email@domain.com" />
+              </div>
+            </div>
+            <div>
+              <label for="volume">Estimasi Volume Kebutuhan</label>
+              <select id="volume" class="contact-input" style="cursor:pointer;">
+                <option value="">Pilih estimasi volume</option>
+                <option>Kurang dari 5 ton/bulan</option>
+                <option>5 - 10 ton/bulan</option>
+                <option>10 - 20 ton/bulan</option>
+                <option>Lebih dari 20 ton/bulan</option>
+              </select>
+            </div>
+            <div>
+              <label for="pesan">Pesan</label>
+              <textarea id="pesan" class="contact-input" rows="4" placeholder="Ceritakan kebutuhan dapur Anda..."></textarea>
+            </div>
+            <button onclick="submitForm()"
+              class="w-full py-4 rounded-full font-bold text-white hover:scale-105 transition-all hover:shadow-xl"
+              style="background:linear-gradient(90deg,#005DCE,#079844)">
+              Kirim Pesan
+            </button>
+            <p class="text-xs text-center text-gray-400">Atau langsung hubungi via <a href="https://wa.me/6288971916535" target="_blank" class="font-bold underline" style="color:#079844">WhatsApp</a></p>
+          </div>
+
+          <!-- Success state (hidden) -->
+          <div id="form-success" style="display:none;" class="text-center py-12">
+            <div class="w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-5" style="background:#E4F5FE">
+              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#079844" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <h3 class="text-2xl font-bold mb-2">Pesan Terkirim!</h3>
+            <p class="text-gray-500">Tim kami akan menghubungi Anda dalam 1x24 jam.</p>
+            <a href="https://wa.me/6288971916535" target="_blank"
+               class="inline-flex items-center gap-2 mt-6 px-6 py-3 rounded-full text-white font-bold" style="background:#079844">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+              Lanjut via WhatsApp
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-gray-900 text-gray-400 px-6 py-16">
+  <div class="max-w-7xl mx-auto">
+    <div class="grid md:grid-cols-4 gap-10 mb-12">
+      <div class="md:col-span-2">
+        <div class="flex items-center gap-3 mb-5">
+        <img src="photos/logo.png" alt="Logo"
+            onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"
+            class="h-20 w-auto"/>
+
+        <span style="display:none" class="items-center gap-2">
+            <span class="text-xl font-bold text-white">SENTRA</span>
+            <span class="text-xl font-bold" style="color:#79AFFF">NIAGA</span>
+        </span>
+        </div>
+        <p class="text-sm leading-relaxed max-w-xs mb-5">
+          Strategic Supply Partner untuk dapur skala besar. Distribusi bahan baku yang stabil, transparan, dan berkelanjutan di Jabodetabek.
+        </p>
+        <a href="https://wa.me/6288971916535" target="_blank"
+           class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-bold text-white"
+           style="background:#079844">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+          Chat WhatsApp
+        </a>
+      </div>
+      <div>
+        <div class="font-bold text-white mb-4 text-sm uppercase tracking-wider">Navigasi</div>
+        <ul class="space-y-2 text-sm">
+          <li><a href="index.html" class="hover:text-white transition-colors">Beranda</a></li>
+          <li><a href="about.html" class="hover:text-white transition-colors">Tentang Kami</a></li>
+          <li><a href="layanan.html" class="hover:text-white transition-colors">Layanan</a></li>
+          <li><a href="klien.html" class="hover:text-white transition-colors">Klien & Mitra</a></li>
+          <li><a href="kontak.html" class="hover:text-white transition-colors">Kontak</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="font-bold text-white mb-4 text-sm uppercase tracking-wider">Kontak</div>
+        <ul class="space-y-3 text-sm">
+          <li class="flex items-start gap-2">
+            <svg class="mt-0.5 flex-shrink-0" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>Jl. Sastra Kencana 1, BSD City, Tangerang Selatan</span>
+          </li>
+          <li class="flex items-center gap-2">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.18 2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 8.91a16 16 0 0 0 6 6l.91-.91a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            088971916535
+          </li>
+          <li class="flex items-center gap-2">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            sentrauniversaltrade@gmail.com
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs">
+      <span>© 2026 Sentra Niaga Universal. All rights reserved.</span>
+      <span style="color:#79AFFF">Sentra Niaga Group</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+window.addEventListener('scroll', () => {
+  const nav = document.getElementById('navbar');
+  if (window.scrollY > 50) nav.classList.add('scrolled'); else nav.classList.remove('scrolled');
+  const doc = document.documentElement;
+  document.getElementById('progress-bar').style.width = (window.scrollY / (doc.scrollHeight - doc.clientHeight) * 100) + '%';
+});
+const obs = new IntersectionObserver(e => e.forEach(x => { if(x.isIntersecting) x.target.classList.add('visible'); }), {threshold:0.12});
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+function submitForm() {
+  const nama = document.getElementById('nama').value;
+  const pesan = document.getElementById('pesan').value;
+  if (!nama.trim()) { alert('Silakan isi nama Anda.'); return; }
+  document.getElementById('contact-form').style.display = 'none';
+  document.getElementById('form-success').style.display = 'block';
+}
+function submitForm() {
+
+  const nama = document.getElementById("nama").value;
+  const jabatan = document.getElementById("jabatan").value;
+  const instansi = document.getElementById("instansi").value;
+  const telepon = document.getElementById("telepon").value;
+  const email = document.getElementById("email").value;
+  const volume = document.getElementById("volume").value;
+  const pesan = document.getElementById("pesan").value;
+
+  const text = `
+Halo, saya ingin bertanya mengenai suplai bahan pangan.
+
+Nama: ${nama}
+Jabatan: ${jabatan}
+Instansi/Dapur: ${instansi}
+No Telepon: ${telepon}
+Email: ${email}
+Estimasi Volume: ${volume}
+
+Pesan:
+${pesan}
+  `;
+
+  const encodedText = encodeURIComponent(text);
+
+  const url = `https://wa.me/6288971916535?text=${encodedText}`;
+
+  window.open(url, "_blank");
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tentang Kami — Sentra Niaga Universal</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet" />
+  <style>
+    * { font-family: 'Atkinson Hyperlegible', sans-serif; }
+    html { scroll-behavior: smooth; }
+    #navbar { transition: background 0.4s, box-shadow 0.4s; }
+    #navbar.scrolled { background: rgba(255,255,255,0.95); backdrop-filter: blur(12px); box-shadow: 0 2px 24px rgba(0,93,206,0.08); }
+    .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .img-placeholder {
+      background: linear-gradient(135deg, #E4F5FE 0%, #79AFFF 100%);
+      display: flex; align-items: center; justify-content: center;
+      color: #005DCE; font-size: 0.75rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase; position: relative; overflow: hidden;
+    }
+    .img-placeholder::after {
+      content: ''; position: absolute; inset: 0;
+      background: repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(0,93,206,0.04) 10px, rgba(0,93,206,0.04) 20px);
+    }
+    .value-card { border-radius: 20px; padding: 32px; transition: transform 0.3s, box-shadow 0.3s; }
+    .value-card:hover { transform: translateY(-6px); box-shadow: 0 20px 60px rgba(0,93,206,0.12); }
+    #progress-bar { position: fixed; top: 0; left: 0; height: 3px; background: linear-gradient(90deg, #005DCE, #F3CF31); z-index: 9999; transition: width 0.1s; }
+    #mobile-menu { display: none; }
+    #mobile-menu.open { display: flex; }
+  </style>
+</head>
+<body class="bg-white text-gray-900 overflow-x-hidden">
+
+<div id="progress-bar" style="width:0%"></div>
+
+<!-- NAVBAR -->
+<nav id="navbar" class="fixed top-0 left-0 right-0 z-50 px-6 py-4 bg-white shadow-sm">
+  <div class="max-w-7xl mx-auto flex items-center justify-between">
+    <a href="index.html" class="flex items-center gap-3">
+      <img src="photos\logo.png" alt="Logo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" class="h-14 w-auto"/>
+      <span style="display:none" class="items-center gap-2">
+        <span class="text-xl font-bold" style="color:#005DCE">SENTRA</span>
+        <span class="text-xl font-bold text-gray-800">NIAGA</span>
+      </span>
+    </a>
+    <div class="hidden md:flex items-center gap-8 text-sm font-bold text-gray-700">
+      <a href="index.html" class="hover:text-[#005DCE] transition-colors">Beranda</a>
+      <a href="about.html" class="text-[#005DCE]">Tentang Kami</a>
+      <a href="layanan.html" class="hover:text-[#005DCE] transition-colors">Layanan</a>
+      
+      <a href="kontak.html" class="px-5 py-2.5 rounded-full text-white text-sm font-bold hover:shadow-lg hover:scale-105 transition-all" style="background:#005DCE">Hubungi Kami</a>
+    </div>
+    <button class="md:hidden p-2" onclick="document.getElementById('mobile-menu').classList.toggle('open')">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#005DCE" stroke-width="2.5" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </div>
+  <div id="mobile-menu" class="flex-col gap-4 px-6 pt-4 pb-6 md:hidden bg-white shadow-xl rounded-b-2xl mt-2">
+    <a href="index.html" class="font-bold text-gray-700">Beranda</a>
+    <a href="about.html" class="font-bold text-[#005DCE]">Tentang Kami</a>
+    <a href="layanan.html" class="font-bold text-gray-700">Layanan</a>
+    <a href="klien.html" class="font-bold text-gray-700">Klien</a>
+    <a href="kontak.html" class="px-5 py-2.5 rounded-full text-white font-bold text-center" style="background:#005DCE">Hubungi Kami</a>
+  </div>
+</nav>
+
+<!-- HERO ABOUT -->
+<section class="pt-32 pb-20 px-6 relative overflow-hidden" style="background:linear-gradient(135deg,#005DCE 0%,#79AFFF 100%)">
+  <div class="absolute inset-0 opacity-10">
+    <div style="position:absolute;top:-100px;right:-100px;width:500px;height:500px;border-radius:50%;background:white;"></div>
+    <div style="position:absolute;bottom:-150px;left:-80px;width:400px;height:400px;border-radius:50%;background:#F3CF31;"></div>
+  </div>
+  <div class="max-w-4xl mx-auto text-center relative z-10">
+    <p class="text-xs font-bold uppercase tracking-widest mb-4 text-blue-200">Mengenal Kami</p>
+    <h1 class="text-5xl font-bold text-white mb-6 leading-tight">Tentang Sentra<br/>Niaga Universal</h1>
+    <p class="text-xl text-blue-100 max-w-2xl mx-auto leading-relaxed">
+      Strategic Supply Partner untuk dapur skala besar — menghadirkan sistem distribusi yang stabil, transparan, dan berkelanjutan.
+    </p>
+  </div>
+</section>
+
+<!-- STORY SECTION -->
+<section class="py-24 px-6 bg-white">
+  <div class="max-w-7xl mx-auto">
+    <div class="grid lg:grid-cols-2 gap-20 items-center">
+      <div class="reveal">
+        <p class="text-xs font-bold uppercase tracking-widest mb-4" style="color:#005DCE">Cerita Kami</p>
+        <h2 class="text-4xl font-bold mb-6 leading-tight">Lahir dari<br/>Kebutuhan Nyata</h2>
+        <p class="text-gray-600 mb-5 leading-relaxed">
+          Sentra Niaga Universal didirikan atas dasar pemahaman mendalam tentang tantangan nyata yang dihadapi dapur skala besar: kualitas bahan baku yang tidak konsisten, harga yang tidak transparan, dan koordinasi yang rumit dengan banyak supplier.
+        </p>
+        <p class="text-gray-600 mb-5 leading-relaxed">
+          Kami percaya bahwa operasional dapur yang stabil dimulai dari sistem pasok yang terpercaya. Karena itu, kami membangun satu sistem distribusi terintegrasi yang menyederhanakan seluruh proses pengadaan.
+        </p>
+        <p class="text-gray-600 leading-relaxed">
+          Hari ini, kami telah melayani 10+ dapur program makan bergizi gratis di Jabodetabek dengan tingkat retensi klien di atas 90% — bukti nyata dari komitmen kami terhadap kualitas dan konsistensi.
+        </p>
+      </div>
+      <div class="reveal" style="transition-delay:0.2s">
+        <div class="rounded-3xl overflow-hidden shadow-2xl" style="aspect-ratio:4/3;">
+          <!-- Replace: foto tim / kantor / operasional -->
+          <img src="photos\foto_proper\foto_mbg.jpg" alt="Tim Sentra Niaga" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" class="w-full h-full object-cover"/>
+          <div class="img-placeholder w-full h-full" style="display:none;min-height:300px;">
+            <div class="z-10 text-center px-6">
+              <svg class="mx-auto mb-3 opacity-40" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#005DCE" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+              <p class="opacity-60 text-xs">Foto tim / kantor Anda</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CLIENT LOGOS SECTION -->
+<section class="py-24 px-6 bg-white">
+  <div class="max-w-7xl mx-auto">
+
+    <div class="text-center mb-16 reveal">
+      <p class="text-xs font-bold uppercase tracking-widest mb-3" style="color:#005DCE">
+        Mitra Terpercaya
+      </p>
+
+      <h2 class="text-4xl font-bold mb-4">
+        Dapur yang Mempercayai Kami
+      </h2>
+
+      <p class="text-gray-500 max-w-xl mx-auto">
+        Program makan bergizi gratis dan operasional dapur berskala tinggi di Jabodetabek.
+      </p>
+    </div>
+
+    <!-- Logo -->
+    <div class="flex justify-center items-center reveal">
+
+      <div class="h-24 flex items-center justify-center px-10 py-4 rounded-2xl border border-gray-200 shadow-sm bg-white">
+        <img 
+          src="photos/foto_proper/BGN_LOGO.png"
+          alt="Mitra BGN"
+          class="max-h-14 object-contain"
+        />
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- VISI MISI -->
+<section class="py-24 px-6" style="background:#F8FBFF">
+  <div class="max-w-7xl mx-auto">
+    <div class="text-center mb-16 reveal">
+      <p class="text-xs font-bold uppercase tracking-widest mb-3" style="color:#005DCE">Arah Perusahaan</p>
+      <h2 class="text-4xl font-bold">Visi & Misi</h2>
+    </div>
+    <div class="grid md:grid-cols-2 gap-8">
+      <!-- Visi -->
+      <div class="value-card reveal" style="background:#005DCE;color:white;">
+        <div class="w-14 h-14 rounded-2xl flex items-center justify-center mb-6" style="background:rgba(255,255,255,0.15)">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        </div>
+        <h3 class="text-2xl font-bold mb-4">Visi</h3>
+        <p class="text-blue-100 leading-relaxed">
+          Menjadi mitra distribusi bahan baku terpercaya bagi dapur skala besar dengan sistem yang stabil, transparan, dan berkelanjutan.
+        </p>
+      </div>
+      <!-- Misi -->
+      <div class="value-card reveal" style="background:white;border:1.5px solid #E4F5FE;transition-delay:0.15s">
+        <div class="w-14 h-14 rounded-2xl flex items-center justify-center mb-6" style="background:#E4F5FE">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#005DCE" stroke-width="2"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+        </div>
+        <h3 class="text-2xl font-bold mb-4">Misi</h3>
+        <ul class="space-y-3">
+          <li class="flex items-start gap-3">
+            <span class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5" style="background:#E4F5FE">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#005DCE" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+            </span>
+            <span class="text-sm text-gray-600">Menyediakan bahan baku dengan kualitas yang konsisten dan terstandarisasi</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5" style="background:#E4F5FE">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#005DCE" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+            </span>
+            <span class="text-sm text-gray-600">Menerapkan sistem harga yang transparan dan mengikuti kondisi pasar</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5" style="background:#E4F5FE">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#005DCE" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+            </span>
+            <span class="text-sm text-gray-600">Menyederhanakan proses pengadaan melalui distribusi satu pintu</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5" style="background:#E4F5FE">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#005DCE" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+            </span>
+            <span class="text-sm text-gray-600">Membangun kemitraan jangka panjang berbasis kepercayaan dan performa</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NATURE IMAGE STRIP -->
+<section class="relative overflow-hidden" style="height:380px;">
+  <!-- Replace: foto kebun / alam / sunset ladang -->
+  <img src="photos\foto_proper\dapur mbg2.png" alt="Alam Indonesia" onerror="this.style.display='none';this.nextElementSibling.style.display='block';" class="w-full h-full object-cover opacity-25"/>
+  <div style="display:none;height:100%;" class="img-placeholder w-full h-full">
+    <div class="z-10 text-center">
+      <svg class="mx-auto mb-3 opacity-40" width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="#005DCE" stroke-width="1.2"><path d="M12 22V12M12 12C12 12 7 9 4 6M12 12C12 12 17 9 20 6"/><circle cx="12" cy="5" r="3"/></svg>
+      <p class="opacity-60 text-sm">Foto kebun / alam / ladang Indonesia</p>
+    </div>
+  </div>
+  <div class="absolute inset-0" style="background:linear-gradient(to bottom, transparent 30%, rgba(0,0,0,0.6) 100%);"></div>
+  <div class="absolute bottom-0 left-0 right-0 px-12 pb-10">
+    <p class="text-black text-2xl font-bold">"Kami tidak hanya mengirim barang, kami membantu menjaga stabilitas operasional dapur Anda."</p>
+  </div>
+</section>
+
+<!-- VALUES -->
+<section class="py-24 px-6 bg-white">
+  <div class="max-w-7xl mx-auto">
+    <div class="text-center mb-16 reveal">
+      <p class="text-xs font-bold uppercase tracking-widest mb-3" style="color:#005DCE">Nilai Kami</p>
+      <h2 class="text-4xl font-bold">Fondasi yang Kami Bangun</h2>
+    </div>
+    <div class="grid md:grid-cols-3 gap-8">
+      <div class="text-center reveal">
+        <div class="w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6" style="background:#E4F5FE">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#005DCE" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3 class="text-xl font-bold mb-3">Kepercayaan</h3>
+        <p class="text-gray-500 text-sm leading-relaxed">Setiap janji kami penuhi. Setiap komitmen kami jaga. Hubungan jangka panjang dibangun dari konsistensi.</p>
+      </div>
+      <div class="text-center reveal" style="transition-delay:0.15s">
+        <div class="w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6" style="background:#E4F5FE">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#005DCE" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        </div>
+        <h3 class="text-xl font-bold mb-3">Transparansi</h3>
+        <p class="text-gray-500 text-sm leading-relaxed">Harga yang jelas, proses yang terbuka.</p>
+      </div>
+      <div class="text-center reveal" style="transition-delay:0.3s">
+        <div class="w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6" style="background:#E4F5FE">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#005DCE" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <h3 class="text-xl font-bold mb-3">Konsistensi</h3>
+        <p class="text-gray-500 text-sm leading-relaxed">Kualitas yang sama dari pengiriman pertama hingga keseribu. Standar tidak pernah kami kompromikan.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="py-20 px-6" style="background:linear-gradient(90deg,#005DCE 0%,#079844 100%)">
+  <div class="max-w-4xl mx-auto text-center">
+    <h2 class="text-3xl font-bold text-white mb-4">Siap Bekerja Sama?</h2>
+    <p class="text-blue-100 mb-8">Jadilah bagian dari jaringan dapur yang sudah merasakan manfaat distribusi terintegrasi.</p>
+    <a href="kontak.html" class="inline-block px-10 py-4 rounded-full font-bold text-gray-900 hover:scale-105 transition-transform" style="background:#F3CF31">Hubungi Kami Sekarang</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-gray-900 text-gray-400 px-6 py-16">
+  <div class="max-w-7xl mx-auto">
+    <div class="grid md:grid-cols-4 gap-10 mb-12">
+      <div class="md:col-span-2">
+        <div class="flex items-center gap-3 mb-5">
+        <img src="photos/logo.png" alt="Logo"
+            onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"
+            class="h-20 w-auto"/>
+
+        <span style="display:none" class="items-center gap-2">
+            <span class="text-xl font-bold text-white">SENTRA</span>
+            <span class="text-xl font-bold" style="color:#79AFFF">NIAGA</span>
+        </span>
+        </div>
+        <p class="text-sm leading-relaxed max-w-xs mb-5">
+          Strategic Supply Partner untuk dapur skala besar. Distribusi bahan baku yang stabil, transparan, dan berkelanjutan di Jabodetabek.
+        </p>
+        <a href="https://wa.me/6288971916535" target="_blank"
+           class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-bold text-white"
+           style="background:#079844">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+          Chat WhatsApp
+        </a>
+      </div>
+      <div>
+        <div class="font-bold text-white mb-4 text-sm uppercase tracking-wider">Navigasi</div>
+        <ul class="space-y-2 text-sm">
+          <li><a href="index.html" class="hover:text-white transition-colors">Beranda</a></li>
+          <li><a href="about.html" class="hover:text-white transition-colors">Tentang Kami</a></li>
+          <li><a href="layanan.html" class="hover:text-white transition-colors">Layanan</a></li>
+          <li><a href="klien.html" class="hover:text-white transition-colors">Klien & Mitra</a></li>
+          <li><a href="kontak.html" class="hover:text-white transition-colors">Kontak</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="font-bold text-white mb-4 text-sm uppercase tracking-wider">Kontak</div>
+        <ul class="space-y-3 text-sm">
+          <li class="flex items-start gap-2">
+            <svg class="mt-0.5 flex-shrink-0" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>Jl. Sastra Kencana 1, BSD City, Tangerang Selatan</span>
+          </li>
+          <li class="flex items-center gap-2">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.18 2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 8.91a16 16 0 0 0 6 6l.91-.91a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            088971916535
+          </li>
+          <li class="flex items-center gap-2">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            sentrauniversaltrade@gmail.com
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs">
+      <span>© 2026 Sentra Niaga Universal. All rights reserved.</span>
+      <span style="color:#79AFFF">Sentra Niaga Group</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+window.addEventListener('scroll', () => {
+  const nav = document.getElementById('navbar');
+  if (window.scrollY > 50) nav.classList.add('scrolled'); else nav.classList.remove('scrolled');
+  const doc = document.documentElement;
+  document.getElementById('progress-bar').style.width = (window.scrollY / (doc.scrollHeight - doc.clientHeight) * 100) + '%';
+});
+const obs = new IntersectionObserver(e => e.forEach(x => { if(x.isIntersecting) x.target.classList.add('visible'); }), {threshold:0.12});
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
