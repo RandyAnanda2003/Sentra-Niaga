@@ -152,6 +152,23 @@
       z-index: 9999;
       transition: width 0.1s;
     }
+
+    /* ── Mobile hero image fix ── */
+    @media (max-width: 1023px) {
+      .hero-img-box {
+        transform: none;
+      }
+      .hero-img-box:hover {
+        transform: none;
+      }
+    }
+
+    /* ── Nature strip responsive ── */
+    @media (max-width: 767px) {
+      .nature-strip-height {
+        height: 320px;
+      }
+    }
   </style>
 </head>
 <body class="bg-white text-gray-900 overflow-x-hidden">
@@ -160,28 +177,28 @@
 <div id="progress-bar" style="width:0%"></div>
 
 <!-- ═══════════════════ NAVBAR ═══════════════════ -->
-<nav id="navbar" class="fixed top-0 left-0 right-0 z-50 px-6 py-4">
+<nav id="navbar" class="fixed top-0 left-0 right-0 z-50 px-4 sm:px-6 py-3 sm:py-4">
   <div class="max-w-7xl mx-auto flex items-center justify-between">
     <!-- Logo -->
-    <a href="index.html" class="flex items-center gap-3">
+    <a href="index.html" class="flex items-center gap-2 sm:gap-3">
       <!-- Replace src with your logo path -->
       <img src="photos\logo.png" alt="Sentra Niaga Universal"
            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
-           class="h-14 w-auto" />
+           class="h-10 sm:h-14 w-auto" />
       <span style="display:none" class="items-center gap-2">
-        <span class="text-xl font-bold" style="color:#005DCE">SENTRA</span>
-        <span class="text-xl font-bold text-gray-800">NIAGA</span>
+        <span class="text-lg sm:text-xl font-bold" style="color:#005DCE">SENTRA</span>
+        <span class="text-lg sm:text-xl font-bold text-gray-800">NIAGA</span>
       </span>
     </a>
 
     <!-- Desktop Menu -->
-    <div class="hidden md:flex items-center gap-8 text-sm font-bold text-gray-700">
+    <div class="hidden md:flex items-center gap-6 lg:gap-8 text-sm font-bold text-gray-700">
       <a href="index.html" class="hover:text-[#005DCE] transition-colors">Beranda</a>
       <a href="about.html" class="hover:text-[#005DCE] transition-colors">Tentang Kami</a>
       <a href="layanan.html" class="hover:text-[#005DCE] transition-colors">Layanan</a>
       
       <a href="kontak.html"
-         class="px-5 py-2.5 rounded-full text-white text-sm font-bold transition-all hover:shadow-lg hover:scale-105"
+         class="px-4 lg:px-5 py-2 lg:py-2.5 rounded-full text-white text-sm font-bold transition-all hover:shadow-lg hover:scale-105"
          style="background:#005DCE">
         Hubungi Kami
       </a>
@@ -208,50 +225,50 @@
 </nav>
 
 <!-- ═══════════════════ HERO ═══════════════════ -->
-<section class="hero-bg min-h-screen flex items-center pt-24 pb-16 relative">
+<section class="hero-bg min-h-screen flex items-center pt-20 sm:pt-24 pb-16 relative">
   <!-- Blobs -->
-  <div class="blob w-96 h-96" style="background:#F3CF31;top:-80px;right:10%;"></div>
-  <div class="blob w-64 h-64" style="background:#079844;bottom:0;left:5%;"></div>
+  <div class="blob w-48 h-48 sm:w-96 sm:h-96" style="background:#F3CF31;top:-80px;right:10%;"></div>
+  <div class="blob w-32 h-32 sm:w-64 sm:h-64" style="background:#079844;bottom:0;left:5%;"></div>
 
-  <div class="max-w-7xl mx-auto px-6 w-full">
-    <div class="grid lg:grid-cols-2 gap-16 items-center">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 w-full">
+    <div class="grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center">
       <!-- Text -->
       <div style="animation: fadeSlideUp 0.9s ease both;">
-        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold mb-6 uppercase tracking-widest"
+        <div class="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs font-bold mb-4 sm:mb-6 uppercase tracking-widest"
              style="background:rgba(255,255,255,0.15);color:white;backdrop-filter:blur(8px);">
           <span class="w-2 h-2 rounded-full animate-pulse" style="background:#F3CF31;"></span>
           Strategic Supply Partner
         </div>
-        <h1 class="text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-white leading-tight mb-4 sm:mb-6">
           Bahan Baku Dapur<br/>
           <span style="color:#F3CF31">Skala Besar,</span><br/>
           Satu Sistem.
         </h1>
-        <p class="text-lg text-blue-100 mb-10 max-w-lg leading-relaxed">
+        <p class="text-base sm:text-lg text-blue-100 mb-7 sm:mb-10 max-w-lg leading-relaxed">
           Distribusi hingga 30 ton per bulan. Dipercaya 10+ dapur program makan bergizi gratis di Jabodetabek untuk menjaga operasional efisien, stabil, dan terkontrol.
         </p>
-        <div class="flex flex-wrap gap-4">
+        <div class="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4">
           <a href="kontak.html"
-             class="px-8 py-4 rounded-full font-bold text-gray-900 hover:scale-105 transition-transform shadow-xl"
+             class="px-6 sm:px-8 py-3 sm:py-4 rounded-full font-bold text-gray-900 hover:scale-105 transition-transform shadow-xl text-center"
              style="background:#F3CF31">
             Diskusikan Kebutuhan Anda
           </a>
           <a href="layanan.html"
-             class="px-8 py-4 rounded-full font-bold text-white border-2 border-white hover:bg-white hover:text-[#005DCE] transition-all">
+             class="px-6 sm:px-8 py-3 sm:py-4 rounded-full font-bold text-white border-2 border-white hover:bg-white hover:text-[#005DCE] transition-all text-center">
             Lihat Layanan
           </a>
         </div>
       </div>
 
       <!-- Hero Image -->
-      <div style="animation: fadeSlideLeft 1s ease 0.3s both;">
+      <div class="mt-8 lg:mt-0" style="animation: fadeSlideLeft 1s ease 0.3s both;">
         <div class="hero-img-box w-full" style="aspect-ratio:4/3;">
           <!-- Replace src below with your hero image path, e.g. src="/assets/hero-warehouse.jpg" -->
           <img src="photos\foto_proper\banner.png"
                alt="Distribusi Bahan Baku Sentra Niaga"
                onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"
                class="w-full h-full object-cover" />
-          <div class="img-placeholder w-full h-full" style="display:none; min-height:340px;">
+          <div class="img-placeholder w-full h-full" style="display:none; min-height:280px;">
             <div class="z-10 text-center px-6">
               <svg class="mx-auto mb-3 opacity-40" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#005DCE" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
               <p class="opacity-60 text-xs">Ganti src dengan path foto hero Anda</p>
@@ -263,7 +280,7 @@
   </div>
 
   <!-- Scroll cue -->
-  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white opacity-60"
+  <div class="absolute bottom-6 sm:bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white opacity-60"
        style="animation: bounce 2s infinite;">
     <span class="text-xs tracking-widest uppercase">Scroll</span>
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
@@ -271,39 +288,41 @@
 </section>
 
 <!-- ═══════════════════ STATS ═══════════════════ -->
-<section class="py-20 px-6" style="background:#F8FBFF">
+<section class="py-12 sm:py-20 px-4 sm:px-6" style="background:#F8FBFF">
   <div class="max-w-5xl mx-auto">
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-      <div class="stat-card p-8 text-center reveal">
-        <div class="text-4xl font-bold mb-2" style="color:#005DCE">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
+      <div class="stat-card p-5 sm:p-8 text-center reveal">
+        <div class="text-3xl sm:text-4xl font-bold mb-2" style="color:#005DCE">
           <span class="counter" data-target="10">0</span>+
         </div>
-        <div class="text-sm text-gray-500 font-bold uppercase tracking-wider">Dapur Aktif</div>
+        <div class="text-xs sm:text-sm text-gray-500 font-bold uppercase tracking-wider">Dapur Aktif</div>
       </div>
-      <div class="stat-card p-8 text-center reveal" style="transition-delay:0.1s">
-        <div class="text-4xl font-bold mb-2" style="color:#079844">
+      <div class="stat-card p-5 sm:p-8 text-center reveal" style="transition-delay:0.1s">
+        <div class="text-3xl sm:text-4xl font-bold mb-2" style="color:#079844">
           <span class="counter" data-target="30">0</span>T
         </div>
-        <div class="text-sm text-gray-500 font-bold uppercase tracking-wider">Distribusi/Bulan</div>
+        <div class="text-xs sm:text-sm text-gray-500 font-bold uppercase tracking-wider">
+          Distribusi/<br>Bulan
+        </div>
       </div>
-      <div class="stat-card p-8 text-center reveal" style="transition-delay:0.2s">
-        <div class="text-4xl font-bold mb-2" style="color:#F3CF31">
+      <div class="stat-card p-5 sm:p-8 text-center reveal" style="transition-delay:0.2s">
+        <div class="text-3xl sm:text-4xl font-bold mb-2" style="color:#F3CF31">
           <span class="counter" data-target="90">0</span>%
         </div>
-        <div class="text-sm text-gray-500 font-bold uppercase tracking-wider">Retensi Klien</div>
+        <div class="text-xs sm:text-sm text-gray-500 font-bold uppercase tracking-wider">Retensi Klien</div>
       </div>
-      <div class="stat-card p-8 text-center reveal" style="transition-delay:0.3s">
-        <div class="text-4xl font-bold mb-2" style="color:#005DCE">1</div>
-        <div class="text-sm text-gray-500 font-bold uppercase tracking-wider">Sistem Terpadu</div>
+      <div class="stat-card p-5 sm:p-8 text-center reveal" style="transition-delay:0.3s">
+        <div class="text-3xl sm:text-4xl font-bold mb-2" style="color:#005DCE">1</div>
+        <div class="text-xs sm:text-sm text-gray-500 font-bold uppercase tracking-wider">Sistem Terpadu</div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- ═══════════════════ INTRO SECTION + NATURE IMAGE ═══════════════════ -->
-<section class="py-24 px-6 bg-white">
+<section class="py-16 sm:py-24 px-4 sm:px-6 bg-white">
   <div class="max-w-7xl mx-auto">
-    <div class="grid lg:grid-cols-2 gap-20 items-center">
+    <div class="grid lg:grid-cols-2 gap-10 sm:gap-16 lg:gap-20 items-center">
       <!-- Image collage -->
       <div class="relative reveal">
         <div class="rounded-3xl overflow-hidden shadow-2xl" style="aspect-ratio:4/3;">
@@ -312,7 +331,7 @@
                alt="Petani Bahan Baku"
                onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"
                class="w-full h-full object-cover" />
-          <div class="img-placeholder w-full h-full" style="display:none; min-height:300px;">
+          <div class="img-placeholder w-full h-full" style="display:none; min-height:260px;">
             <div class="z-10 text-center px-6">
               <svg class="mx-auto mb-3 opacity-40" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#005DCE" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
               <p class="opacity-60 text-xs">Foto petani / bahan baku segar</p>
@@ -320,25 +339,25 @@
           </div>
         </div>
         <!-- Floating accent card -->
-        <div class="absolute -bottom-6 -right-6 p-5 rounded-2xl shadow-2xl"
-             style="background:#005DCE; color:white; min-width:170px;">
-          <div class="text-2xl font-bold">Jabodetabek</div>
+        <div class="absolute -bottom-4 sm:-bottom-6 -right-2 sm:-right-6 p-3 sm:p-5 rounded-2xl shadow-2xl"
+             style="background:#005DCE; color:white; min-width:140px;">
+          <div class="text-lg sm:text-2xl font-bold">Jabodetabek</div>
           <div class="text-xs opacity-80 mt-1 tracking-wider uppercase">Area Distribusi</div>
         </div>
         <!-- Small badge -->
-        <div class="absolute -top-4 -left-4 w-20 h-20 rounded-full flex items-center justify-center shadow-xl text-center"
+        <div class="absolute -top-3 sm:-top-4 -left-3 sm:-left-4 w-14 h-14 sm:w-20 sm:h-20 rounded-full flex items-center justify-center shadow-xl text-center"
              style="background:#F3CF31;">
           <div>
-            <div class="text-sm font-bold text-gray-900 leading-none">QC</div>
+            <div class="text-xs sm:text-sm font-bold text-gray-900 leading-none">QC</div>
             <div class="text-xs text-gray-700">Terjamin</div>
           </div>
         </div>
       </div>
 
       <!-- Text -->
-      <div class="reveal" style="transition-delay:0.2s">
+      <div class="reveal mt-8 lg:mt-0" style="transition-delay:0.2s">
         <p class="text-xs font-bold uppercase tracking-widest mb-4" style="color:#005DCE">Tentang Kami</p>
-        <h2 class="text-4xl font-bold mb-6 leading-tight">
+        <h2 class="text-3xl sm:text-4xl font-bold mb-6 leading-tight">
           Distribusi Satu Pintu<br/>untuk Stabilitas<br/>
           <span style="color:#005DCE">Operasional Dapur</span>
         </h2>
@@ -349,7 +368,7 @@
           Kami memahami bahwa dapur dengan volume besar tidak hanya membutuhkan barang — tetapi sistem distribusi yang terkontrol dan dapat dipertanggungjawabkan.
         </p>
         <a href="about.html"
-           class="inline-flex items-center gap-2 px-7 py-3.5 rounded-full font-bold text-white hover:scale-105 transition-transform"
+           class="inline-flex items-center gap-2 px-6 sm:px-7 py-3 sm:py-3.5 rounded-full font-bold text-white hover:scale-105 transition-transform"
            style="background:#005DCE">
           Pelajari Lebih Lanjut
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
@@ -360,23 +379,23 @@
 </section>
 
 <!-- ═══════════════════ LAYANAN ═══════════════════ -->
-<section class="py-24 px-6" style="background:#F8FBFF">
+<section class="py-16 sm:py-24 px-4 sm:px-6" style="background:#F8FBFF">
   <div class="max-w-7xl mx-auto">
-    <div class="text-center mb-16 reveal">
+    <div class="text-center mb-10 sm:mb-16 reveal">
       <p class="text-xs font-bold uppercase tracking-widest mb-3" style="color:#005DCE">Layanan Kami</p>
-      <h2 class="text-4xl font-bold">Sistem Lengkap untuk<br/>Kebutuhan Dapur Anda</h2>
+      <h2 class="text-3xl sm:text-4xl font-bold">Sistem Lengkap untuk<br/>Kebutuhan Dapur Anda</h2>
     </div>
 
-    <div class="grid md:grid-cols-3 gap-8">
+    <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
       <!-- Card 1 -->
-      <div class="feature-card p-8 reveal">
-        <div class="w-14 h-14 rounded-2xl flex items-center justify-center mb-6" style="background:#E4F5FE">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#005DCE" stroke-width="2" stroke-linecap="round">
+      <div class="feature-card p-6 sm:p-8 reveal">
+        <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl flex items-center justify-center mb-5 sm:mb-6" style="background:#E4F5FE">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#005DCE" stroke-width="2" stroke-linecap="round">
             <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
             <circle cx="12" cy="10" r="3"/>
           </svg>
         </div>
-        <h3 class="text-xl font-bold mb-3">Distribusi Bahan Baku</h3>
+        <h3 class="text-lg sm:text-xl font-bold mb-3">Distribusi Bahan Baku</h3>
         <p class="text-gray-500 leading-relaxed text-sm">Buah lokal & import segar, Susu UHT, dan peralatan operasional dapur — semua melalui quality control ketat sebelum pengiriman.</p>
         <a href="layanan.html" class="inline-flex items-center gap-1 text-sm font-bold mt-5" style="color:#005DCE">
           Selengkapnya <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
@@ -384,16 +403,16 @@
       </div>
 
       <!-- Card 2 -->
-      <div class="feature-card p-8 reveal" style="transition-delay:0.15s">
-        <div class="w-14 h-14 rounded-2xl flex items-center justify-center mb-6" style="background:#E4F5FE">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#005DCE" stroke-width="2" stroke-linecap="round">
+      <div class="feature-card p-6 sm:p-8 reveal" style="transition-delay:0.15s">
+        <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl flex items-center justify-center mb-5 sm:mb-6" style="background:#E4F5FE">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#005DCE" stroke-width="2" stroke-linecap="round">
             <rect x="1" y="3" width="15" height="13" rx="2"/>
             <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/>
             <circle cx="5.5" cy="18.5" r="2.5"/>
             <circle cx="18.5" cy="18.5" r="2.5"/>
           </svg>
         </div>
-        <h3 class="text-xl font-bold mb-3">Sistem Distribusi Terjadwal</h3>
+        <h3 class="text-lg sm:text-xl font-bold mb-3">Sistem Distribusi Terjadwal</h3>
         <p class="text-gray-500 leading-relaxed text-sm">Pengadaan terpusat dalam satu sistem dengan jadwal pengiriman terstruktur, rekap dokumentasi, dan transparansi harga pasar.</p>
         <a href="layanan.html" class="inline-flex items-center gap-1 text-sm font-bold mt-5" style="color:#005DCE">
           Selengkapnya <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
@@ -401,13 +420,13 @@
       </div>
 
       <!-- Card 3 -->
-      <div class="feature-card p-8 reveal" style="transition-delay:0.3s">
-        <div class="w-14 h-14 rounded-2xl flex items-center justify-center mb-6" style="background:#E4F5FE">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#005DCE" stroke-width="2" stroke-linecap="round">
+      <div class="feature-card p-6 sm:p-8 reveal sm:col-span-2 md:col-span-1" style="transition-delay:0.3s">
+        <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl flex items-center justify-center mb-5 sm:mb-6" style="background:#E4F5FE">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#005DCE" stroke-width="2" stroke-linecap="round">
             <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
           </svg>
         </div>
-        <h3 class="text-xl font-bold mb-3">Konsultasi Volume</h3>
+        <h3 class="text-lg sm:text-xl font-bold mb-3">Konsultasi Volume</h3>
         <p class="text-gray-500 leading-relaxed text-sm">Pendampingan perencanaan kebutuhan volume agar lebih efisien, mengurangi risiko overstock maupun kekurangan stok.</p>
         <a href="layanan.html" class="inline-flex items-center gap-1 text-sm font-bold mt-5" style="color:#005DCE">
           Selengkapnya <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
@@ -418,7 +437,7 @@
 </section>
 
 <!-- ═══════════════════ NATURE STRIP (Pulau / Alam) ═══════════════════ -->
-<section class="relative overflow-hidden" style="height: 420px;">
+<section class="relative overflow-hidden nature-strip-height" style="height: 420px;">
   <!-- Replace src: foto pulau / pemandangan alam / kebun -->
   <img src="photos\pulau_jawa.jpg"
        alt="Keindahan Alam Indonesia"
@@ -432,54 +451,54 @@
   </div>
   <!-- Overlay -->
   <div class="absolute inset-0" style="background:linear-gradient(to right, rgba(0,93,206,0.75) 0%, rgba(0,93,206,0.2) 60%, transparent 100%);"></div>
-  <div class="absolute inset-0 flex items-center px-12 lg:px-24">
+  <div class="absolute inset-0 flex items-center px-6 sm:px-12 lg:px-24">
     <div class="max-w-lg">
       <p class="text-xs font-bold uppercase tracking-widest mb-3 text-blue-200">Dari Sumbernya</p>
-      <h2 class="text-3xl lg:text-4xl font-bold text-white leading-snug">Bahan Baku Terbaik dari Seluruh Nusantara</h2>
-      <p class="text-blue-100 mt-4 leading-relaxed">Kami memastikan kualitas bahan baku dari sumber yang terpercaya, langsung ke dapur Anda dengan standar yang konsisten.</p>
+      <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-white leading-snug">Bahan Baku Terbaik dari Seluruh Nusantara</h2>
+      <p class="text-blue-100 mt-4 leading-relaxed text-sm sm:text-base">Kami memastikan kualitas bahan baku dari sumber yang terpercaya, langsung ke dapur Anda dengan standar yang konsisten.</p>
     </div>
   </div>
 </section>
 
 <!-- ═══════════════════ KEUNGGULAN ═══════════════════ -->
-<section class="py-24 px-6 bg-white">
+<section class="py-16 sm:py-24 px-4 sm:px-6 bg-white">
   <div class="max-w-7xl mx-auto">
-    <div class="grid lg:grid-cols-2 gap-20 items-center">
+    <div class="grid lg:grid-cols-2 gap-10 sm:gap-16 lg:gap-20 items-center">
       <div class="reveal">
         <p class="text-xs font-bold uppercase tracking-widest mb-4" style="color:#079844">Keunggulan Kami</p>
-        <h2 class="text-4xl font-bold mb-10 leading-tight">Mengapa Memilih<br/><span style="color:#005DCE">Sentra Niaga Universal?</span></h2>
+        <h2 class="text-3xl sm:text-4xl font-bold mb-8 sm:mb-10 leading-tight">Mengapa Memilih<br/><span style="color:#005DCE">Sentra Niaga Universal?</span></h2>
 
-        <div class="space-y-5">
-          <div class="flex items-start gap-4">
-            <div class="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5" style="background:#E4F5FE">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#005DCE" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        <div class="space-y-4 sm:space-y-5">
+          <div class="flex items-start gap-3 sm:gap-4">
+            <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5" style="background:#E4F5FE">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#005DCE" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
             </div>
             <div>
               <div class="font-bold mb-1">Sistem Harga Transparan</div>
               <div class="text-sm text-gray-500">Berbasis kondisi pasar aktual tanpa biaya tersembunyi.</div>
             </div>
           </div>
-          <div class="flex items-start gap-4">
-            <div class="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5" style="background:#E4F5FE">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#005DCE" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          <div class="flex items-start gap-3 sm:gap-4">
+            <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5" style="background:#E4F5FE">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#005DCE" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
             </div>
             <div>
               <div class="font-bold mb-1">Quality Control Sebelum Pengiriman</div>
               <div class="text-sm text-gray-500">Setiap produk dicek kualitasnya sebelum sampai ke tangan Anda.</div>
             </div>
           </div>
-          <div class="flex items-start gap-4">
-            <div class="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5" style="background:#E4F5FE">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#005DCE" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          <div class="flex items-start gap-3 sm:gap-4">
+            <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5" style="background:#E4F5FE">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#005DCE" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
             </div>
             <div>
               <div class="font-bold mb-1">Distribusi Terjadwal & Terstruktur</div>
               <div class="text-sm text-gray-500">Jadwal pengiriman yang konsisten untuk menjaga kestabilan stok.</div>
             </div>
           </div>
-          <div class="flex items-start gap-4">
-            <div class="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5" style="background:#E4F5FE">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#005DCE" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          <div class="flex items-start gap-3 sm:gap-4">
+            <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5" style="background:#E4F5FE">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#005DCE" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
             </div>
             <div>
               <div class="font-bold mb-1">Respons Cepat & Komunikasi Profesional</div>
@@ -490,33 +509,33 @@
       </div>
 
       <!-- Image -->
-      <div class="reveal" style="transition-delay:0.2s">
-        <div class="grid grid-cols-2 gap-4">
+      <div class="reveal mt-8 lg:mt-0" style="transition-delay:0.2s">
+        <div class="grid grid-cols-2 gap-3 sm:gap-4">
           <div class="rounded-2xl overflow-hidden shadow-lg" style="aspect-ratio:1;">
             <!-- Replace: foto gudang / produk -->
             <img src="photos\foto_proper\Gudang.png" alt="Gudang" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" class="w-full h-full object-cover"/>
-            <div class="img-placeholder w-full h-full" style="display:none; min-height:160px;">
+            <div class="img-placeholder w-full h-full" style="display:none; min-height:130px;">
               <p class="z-10 text-xs opacity-60">Foto gudang</p>
             </div>
           </div>
-          <div class="rounded-2xl overflow-hidden shadow-lg mt-8" style="aspect-ratio:1;">
+          <div class="rounded-2xl overflow-hidden shadow-lg mt-6 sm:mt-8" style="aspect-ratio:1;">
             <!-- Replace: foto produk segar -->
             <img src="photos\buah_segar.jpg" alt="Produk Segar" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" class="w-full h-full object-cover"/>
-            <div class="img-placeholder w-full h-full" style="display:none; min-height:160px;">
+            <div class="img-placeholder w-full h-full" style="display:none; min-height:130px;">
               <p class="z-10 text-xs opacity-60">Foto produk segar</p>
             </div>
           </div>
           <div class="rounded-2xl overflow-hidden shadow-lg" style="aspect-ratio:1; col-span:2;">
             <!-- Replace: foto tim / operasional -->
             <img src="photos\tim operasional sayur.jpg" alt="Operasional" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" class="w-full h-full object-cover"/>
-            <div class="img-placeholder w-full h-full" style="display:none; min-height:160px;">
+            <div class="img-placeholder w-full h-full" style="display:none; min-height:130px;">
               <p class="z-10 text-xs opacity-60">Foto operasional / tim</p>
             </div>
           </div>
-          <div class="rounded-2xl overflow-hidden shadow-lg -mt-8" style="aspect-ratio:1;">
+          <div class="rounded-2xl overflow-hidden shadow-lg -mt-6 sm:-mt-8" style="aspect-ratio:1;">
             <!-- Replace: foto pengiriman -->
             <img src="photos\foto_proper\distribusi2.png" alt="Pengiriman" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" class="w-full h-full object-cover"/>
-            <div class="img-placeholder w-full h-full" style="display:none; min-height:160px;">
+            <div class="img-placeholder w-full h-full" style="display:none; min-height:130px;">
               <p class="z-10 text-xs opacity-60">Foto pengiriman</p>
             </div>
           </div>
@@ -527,7 +546,7 @@
 </section>
 
 <!-- ═══════════════════ MARQUEE / TRUST ═══════════════════ -->
-<section class="py-12 overflow-hidden border-y" style="border-color:#E4F5FE; background:#F8FBFF">
+<section class="py-10 sm:py-12 overflow-hidden border-y" style="border-color:#E4F5FE; background:#F8FBFF">
   <div class="relative flex overflow-hidden">
     <div class="marquee-track">
       <span class="text-sm font-bold uppercase tracking-widest opacity-40">Quality Control</span>
@@ -559,21 +578,21 @@
 </section>
 
 <!-- ═══════════════════ CTA STRIP ═══════════════════ -->
-<section class="cta-strip py-20 px-6 reveal">
+<section class="cta-strip py-14 sm:py-20 px-4 sm:px-6 reveal">
   <div class="max-w-4xl mx-auto text-center relative z-10">
     <p class="text-xs font-bold uppercase tracking-widest mb-4 text-green-200">Mulai Sekarang</p>
-    <h2 class="text-4xl font-bold text-white mb-6">Diskusikan Kebutuhan<br/>Dapur Anda Hari Ini</h2>
-    <p class="text-blue-100 mb-10 max-w-xl mx-auto leading-relaxed">
+    <h2 class="text-3xl sm:text-4xl font-bold text-white mb-5 sm:mb-6">Diskusikan Kebutuhan<br/>Dapur Anda Hari Ini</h2>
+    <p class="text-blue-100 mb-8 sm:mb-10 max-w-xl mx-auto leading-relaxed text-sm sm:text-base">
       Tim kami siap membantu merencanakan sistem distribusi yang tepat untuk skala operasional Anda.
     </p>
-    <div class="flex flex-wrap gap-4 justify-center">
+    <div class="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 justify-center">
       <a href="kontak.html"
-         class="px-10 py-4 rounded-full font-bold text-gray-900 hover:scale-105 transition-transform shadow-xl"
+         class="px-8 sm:px-10 py-3.5 sm:py-4 rounded-full font-bold text-gray-900 hover:scale-105 transition-transform shadow-xl text-center"
          style="background:#F3CF31">
         Hubungi Kami
       </a>
       <a href="https://wa.me/6288971916535" target="_blank"
-         class="inline-flex items-center gap-2 px-10 py-4 rounded-full font-bold text-white border-2 border-white hover:bg-white hover:text-[#005DCE] transition-all">
+         class="inline-flex items-center justify-center gap-2 px-8 sm:px-10 py-3.5 sm:py-4 rounded-full font-bold text-white border-2 border-white hover:bg-white hover:text-[#005DCE] transition-all">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
         WhatsApp
       </a>
@@ -582,14 +601,14 @@
 </section>
 
 <!-- ═══════════════════ FOOTER ═══════════════════ -->
-<footer class="bg-gray-900 text-gray-400 px-6 py-16">
+<footer class="bg-gray-900 text-gray-400 px-4 sm:px-6 py-12 sm:py-16">
   <div class="max-w-7xl mx-auto">
-    <div class="grid md:grid-cols-4 gap-10 mb-12">
-      <div class="md:col-span-2">
+    <div class="grid sm:grid-cols-2 md:grid-cols-4 gap-8 sm:gap-10 mb-10 sm:mb-12">
+      <div class="sm:col-span-2">
         <div class="flex items-center gap-3 mb-5">
         <img src="photos/logo.png" alt="Logo"
             onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"
-            class="h-20 w-auto"/>
+            class="h-14 sm:h-20 w-auto"/>
 
         <span style="display:none" class="items-center gap-2">
             <span class="text-xl font-bold text-white">SENTRA</span>
@@ -612,7 +631,7 @@
           <li><a href="index.html" class="hover:text-white transition-colors">Beranda</a></li>
           <li><a href="about.html" class="hover:text-white transition-colors">Tentang Kami</a></li>
           <li><a href="layanan.html" class="hover:text-white transition-colors">Layanan</a></li>
-          <li><a href="klien.html" class="hover:text-white transition-colors">Klien & Mitra</a></li>
+         
           <li><a href="kontak.html" class="hover:text-white transition-colors">Kontak</a></li>
         </ul>
       </div>
@@ -634,7 +653,7 @@
         </ul>
       </div>
     </div>
-    <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs">
+    <div class="border-t border-gray-800 pt-6 sm:pt-8 flex flex-col md:flex-row items-center justify-between gap-3 sm:gap-4 text-xs text-center md:text-left">
       <span>© 2026 Sentra Niaga Universal. All rights reserved.</span>
       <span style="color:#79AFFF">Sentra Niaga Group</span>
     </div>
