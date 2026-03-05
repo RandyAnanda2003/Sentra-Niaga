@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Sentra Niaga Universal — Strategic Supply Partner</title>
+  <link rel="icon" type="image/png" href="photos\logo.png">
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet" />
   <style>
@@ -156,10 +157,11 @@
     /* ── Mobile hero image fix ── */
     @media (max-width: 1023px) {
       .hero-img-box {
-        transform: none;
+        transform: perspective(900px) rotateY(-3deg) rotateX(1.5deg);
       }
+
       .hero-img-box:hover {
-        transform: none;
+        transform: perspective(900px) rotateY(-2deg) rotateX(1deg);
       }
     }
 
@@ -177,14 +179,14 @@
 <div id="progress-bar" style="width:0%"></div>
 
 <!-- ═══════════════════ NAVBAR ═══════════════════ -->
-<nav id="navbar" class="fixed top-0 left-0 right-0 z-50 px-4 sm:px-6 py-3 sm:py-4">
+<nav id="navbar" class="fixed top-0 left-0 right-0 z-50 px-4 sm:px-6 py-2">
   <div class="max-w-7xl mx-auto flex items-center justify-between">
     <!-- Logo -->
     <a href="index.html" class="flex items-center gap-2 sm:gap-3">
       <!-- Replace src with your logo path -->
       <img src="photos\logo.png" alt="Sentra Niaga Universal"
            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
-           class="h-10 sm:h-14 w-auto" />
+           class="h-20 w-auto" />
       <span style="display:none" class="items-center gap-2">
         <span class="text-lg sm:text-xl font-bold" style="color:#005DCE">SENTRA</span>
         <span class="text-lg sm:text-xl font-bold text-gray-800">NIAGA</span>
@@ -219,13 +221,13 @@
     <a href="index.html" class="font-bold text-gray-700 hover:text-[#005DCE]">Beranda</a>
     <a href="about.html" class="font-bold text-gray-700 hover:text-[#005DCE]">Tentang Kami</a>
     <a href="layanan.html" class="font-bold text-gray-700 hover:text-[#005DCE]">Layanan</a>
-    <a href="klien.html" class="font-bold text-gray-700 hover:text-[#005DCE]">Klien</a>
+    
     <a href="kontak.html" class="px-5 py-2.5 rounded-full text-white font-bold text-center" style="background:#005DCE">Hubungi Kami</a>
   </div>
 </nav>
 
 <!-- ═══════════════════ HERO ═══════════════════ -->
-<section class="hero-bg min-h-screen flex items-center pt-20 sm:pt-24 pb-16 relative">
+<section class="hero-bg min-h-screen flex items-center pt-20 sm:pt-30 pb-16 relative">
   <!-- Blobs -->
   <div class="blob w-48 h-48 sm:w-96 sm:h-96" style="background:#F3CF31;top:-80px;right:10%;"></div>
   <div class="blob w-32 h-32 sm:w-64 sm:h-64" style="background:#079844;bottom:0;left:5%;"></div>
@@ -240,12 +242,11 @@
           Strategic Supply Partner
         </div>
         <h1 class="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-white leading-tight mb-4 sm:mb-6">
-          Bahan Baku Dapur<br/>
-          <span style="color:#F3CF31">Skala Besar,</span><br/>
-          Satu Sistem.
+          Optimalisasi Bahan Baku<br/>
+          <span style="color:#F3CF31">Dengan Satu Sistem Terpadu</span>
         </h1>
         <p class="text-base sm:text-lg text-blue-100 mb-7 sm:mb-10 max-w-lg leading-relaxed">
-          Distribusi hingga 30 ton per bulan. Dipercaya 10+ dapur program makan bergizi gratis di Jabodetabek untuk menjaga operasional efisien, stabil, dan terkontrol.
+            Sempurnakan kebutuhan baku dapur anda melalui layanan terpadu kami. Kami hadir untuk memastikan pasokan bahan baku berkualitas, tepat waktu, dan efisien agar operasional dapur Anda selalu optimal. 
         </p>
         <div class="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4">
           <a href="kontak.html"
@@ -299,7 +300,7 @@
       </div>
       <div class="stat-card p-5 sm:p-8 text-center reveal" style="transition-delay:0.1s">
         <div class="text-3xl sm:text-4xl font-bold mb-2" style="color:#079844">
-          <span class="counter" data-target="30">0</span>T
+          <span class="counter" data-target="30">0</span>Ton
         </div>
         <div class="text-xs sm:text-sm text-gray-500 font-bold uppercase tracking-wider">
           Distribusi/<br>Bulan
@@ -312,8 +313,8 @@
         <div class="text-xs sm:text-sm text-gray-500 font-bold uppercase tracking-wider">Retensi Klien</div>
       </div>
       <div class="stat-card p-5 sm:p-8 text-center reveal" style="transition-delay:0.3s">
-        <div class="text-3xl sm:text-4xl font-bold mb-2" style="color:#005DCE">1</div>
-        <div class="text-xs sm:text-sm text-gray-500 font-bold uppercase tracking-wider">Sistem Terpadu</div>
+        <div class="text-3xl sm:text-4xl font-bold mb-2" style="color:#005DCE">95%</div>
+        <div class="text-xs sm:text-sm text-gray-500 font-bold uppercase tracking-wider">Pengiriman Tepat Waktu</div>
       </div>
     </div>
   </div>
@@ -365,7 +366,7 @@
           Sentra Niaga Universal adalah perusahaan distribusi bahan baku untuk dapur skala besar di Jabodetabek. Kami membantu menjaga stabilitas pasokan, kualitas, serta efisiensi anggaran.
         </p>
         <p class="text-gray-600 mb-8 leading-relaxed">
-          Kami memahami bahwa dapur dengan volume besar tidak hanya membutuhkan barang — tetapi sistem distribusi yang terkontrol dan dapat dipertanggungjawabkan.
+            Kami memahami bahwa dapur dengan volume besar tidak hanya membutuhkan pasokan bahan, tetapi juga sistem distribusi yang rapi, terkontrol, dan dapat diandalkan.
         </p>
         <a href="about.html"
            class="inline-flex items-center gap-2 px-6 sm:px-7 py-3 sm:py-3.5 rounded-full font-bold text-white hover:scale-105 transition-transform"
@@ -396,7 +397,7 @@
           </svg>
         </div>
         <h3 class="text-lg sm:text-xl font-bold mb-3">Distribusi Bahan Baku</h3>
-        <p class="text-gray-500 leading-relaxed text-sm">Buah lokal & import segar, Susu UHT, dan peralatan operasional dapur — semua melalui quality control ketat sebelum pengiriman.</p>
+        <p class="text-gray-500 leading-relaxed text-sm">Kami menyediakan buah dan sayur segar lokal maupun impor, susu UHT, serta peralatan operasional dapur, semuanya melalui proses quality control sebelum sampai ke Anda</p>
         <a href="layanan.html" class="inline-flex items-center gap-1 text-sm font-bold mt-5" style="color:#005DCE">
           Selengkapnya <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
         </a>
@@ -413,7 +414,7 @@
           </svg>
         </div>
         <h3 class="text-lg sm:text-xl font-bold mb-3">Sistem Distribusi Terjadwal</h3>
-        <p class="text-gray-500 leading-relaxed text-sm">Pengadaan terpusat dalam satu sistem dengan jadwal pengiriman terstruktur, rekap dokumentasi, dan transparansi harga pasar.</p>
+        <p class="text-gray-500 leading-relaxed text-sm">Semua pengadaan kami kelola dalam satu sistem, dengan jadwal pengiriman yang jelas, dokumentasi rapi, dan harga yang transparan.</p>
         <a href="layanan.html" class="inline-flex items-center gap-1 text-sm font-bold mt-5" style="color:#005DCE">
           Selengkapnya <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
         </a>
@@ -427,7 +428,7 @@
           </svg>
         </div>
         <h3 class="text-lg sm:text-xl font-bold mb-3">Konsultasi Volume</h3>
-        <p class="text-gray-500 leading-relaxed text-sm">Pendampingan perencanaan kebutuhan volume agar lebih efisien, mengurangi risiko overstock maupun kekurangan stok.</p>
+        <p class="text-gray-500 leading-relaxed text-sm">Kami membantu merencanakan kebutuhan volume bahan baku dapur anda supaya operasional lebih efisien dan tidak terjadi kelebihan atau kekurangan stok.</p>
         <a href="layanan.html" class="inline-flex items-center gap-1 text-sm font-bold mt-5" style="color:#005DCE">
           Selengkapnya <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
         </a>
@@ -455,7 +456,7 @@
     <div class="max-w-lg">
       <p class="text-xs font-bold uppercase tracking-widest mb-3 text-blue-200">Dari Sumbernya</p>
       <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-white leading-snug">Bahan Baku Terbaik dari Seluruh Nusantara</h2>
-      <p class="text-blue-100 mt-4 leading-relaxed text-sm sm:text-base">Kami memastikan kualitas bahan baku dari sumber yang terpercaya, langsung ke dapur Anda dengan standar yang konsisten.</p>
+      <p class="text-blue-100 mt-4 leading-relaxed text-sm sm:text-base">Kami memastikan bahwa kualitas bahan baku berasal dari sumber yang terpercaya, langsung ke dapur Anda dengan standar terbaik.</p>
     </div>
   </div>
 </section>
@@ -474,8 +475,8 @@
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#005DCE" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
             </div>
             <div>
-              <div class="font-bold mb-1">Sistem Harga Transparan</div>
-              <div class="text-sm text-gray-500">Berbasis kondisi pasar aktual tanpa biaya tersembunyi.</div>
+              <div class="font-bold mb-1">Integritas Harga Bahan</div>
+              <div class="text-sm text-gray-500">Berbasis kondisi pasar aktual</div>
             </div>
           </div>
           <div class="flex items-start gap-3 sm:gap-4">
@@ -493,7 +494,7 @@
             </div>
             <div>
               <div class="font-bold mb-1">Distribusi Terjadwal & Terstruktur</div>
-              <div class="text-sm text-gray-500">Jadwal pengiriman yang konsisten untuk menjaga kestabilan stok.</div>
+              <div class="text-sm text-gray-500">JPengiriman dengan jadwal yang konsisten supaya stok tetap aman dan terjaga.</div>
             </div>
           </div>
           <div class="flex items-start gap-3 sm:gap-4">
@@ -502,7 +503,7 @@
             </div>
             <div>
               <div class="font-bold mb-1">Respons Cepat & Komunikasi Profesional</div>
-              <div class="text-sm text-gray-500">Tim kami siap membantu dan memberikan solusi dengan cepat.</div>
+              <div class="text-sm text-gray-500">Tim kami siap membantu dan memberikan solusi cepat dan tepat untuk kebutuhan dapur anda.</div>
             </div>
           </div>
         </div>
@@ -608,7 +609,7 @@
         <div class="flex items-center gap-3 mb-5">
         <img src="photos/logo.png" alt="Logo"
             onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"
-            class="h-14 sm:h-20 w-auto"/>
+            class="h-24 w-auto"/>
 
         <span style="display:none" class="items-center gap-2">
             <span class="text-xl font-bold text-white">SENTRA</span>
@@ -616,7 +617,7 @@
         </span>
         </div>
         <p class="text-sm leading-relaxed max-w-xs mb-5">
-          Strategic Supply Partner untuk dapur skala besar. Distribusi bahan baku yang stabil, transparan, dan berkelanjutan di Jabodetabek.
+            Strategic Supply Partner untuk dapur skala besar. Sempurnakan Kebutuhan Bahan Baku Anda, Dengan Sentra Niaga.
         </p>
         <a href="https://wa.me/6288971916535" target="_blank"
            class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-bold text-white"
