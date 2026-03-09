@@ -740,8 +740,8 @@ const slideGroups = [
   {
     main: "photos\\foto_proper\\distribusi.png",
     tr:   "photos\\foto_proper\\Gudang.png",
-    bl:   "photos\\foto_proper\\distribusi2.png",
-    br:   "photos\\tim operasional sayur.jpg"
+    bl:   "photos\\foto_proper\\gudang2.png",
+    br:   "photos\\foto_proper\\foto_susu_kotak.jpg"
   },
   {
     main: "photos\\foto_proper\\gudang_pisang.png",
@@ -780,10 +780,7 @@ function goSlide(idx) {
   });
 }
 
-setInterval(() => {
-  const randomIndex = Math.floor(Math.random() * slideGroups.length);
-  goSlide(randomIndex);
-}, 2000);
+setInterval(() => goSlide((currentSlide + 1) % slideGroups.length), 2000);
 
 </script>
 </body>
