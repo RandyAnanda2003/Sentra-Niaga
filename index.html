@@ -50,6 +50,13 @@
     .hero-img-box:hover { transform: perspective(900px) rotateY(0deg) rotateX(0deg); }
 
     /* ── Animated counters ── */
+    /* Carousel fade transition */
+    .slide-img {
+      transition: opacity 0.4s ease;
+    }
+    .slide-img.fading {
+      opacity: 0;
+    }
     .stat-card {
       background: white;
       border-radius: 20px;
@@ -443,7 +450,7 @@
 <!-- ═══════════════════ NATURE STRIP (Pulau / Alam) ═══════════════════ -->
 <section class="relative overflow-hidden nature-strip-height" style="height: 420px;">
   <!-- Replace src: foto pulau / pemandangan alam / kebun -->
-  <img src="photos\pulau_jawa.jpg"
+  <img src="photos\foto_proper\new_pulau _jawa.jpg"
        alt="Keindahan Alam Indonesia"
        onerror="this.style.display='none';this.nextElementSibling.style.display='block';"
        class="w-full h-full object-cover" />
@@ -511,37 +518,48 @@
           </div>
         </div>
       </div>
+      <!-- Image Carousel -->
+             <div class="reveal mt-8 lg:mt-0" style="transition-delay:0.2s">
+        <div class="relative" style="height: 480px;">
+          
+          <!-- Main big frame (top-left) -->
+          <div class="absolute rounded-3xl overflow-hidden shadow-2xl border-4 border-white"
+              style="width:62%; height:62%; top:0; left:0; z-index:2;">
+            <img id="slide-main" src="photos\foto_proper\Gudang.png"
+                class="w-full h-full object-cover slide-img"/>
+          </div>
 
-      <!-- Image -->
-      <div class="reveal mt-8 lg:mt-0" style="transition-delay:0.2s">
-        <div class="grid grid-cols-2 gap-3 sm:gap-4">
-          <div class="rounded-2xl overflow-hidden shadow-lg" style="aspect-ratio:1;">
-            <!-- Replace: foto gudang / produk -->
-            <img src="photos\foto_proper\Gudang.png" alt="Gudang" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" class="w-full h-full object-cover"/>
-            <div class="img-placeholder w-full h-full" style="display:none; min-height:130px;">
-              <p class="z-10 text-xs opacity-60">Foto gudang</p>
-            </div>
+          <!-- Small frame top-right -->
+          <div class="absolute rounded-2xl overflow-hidden shadow-xl border-4 border-white"
+              style="width:35%; height:44%; top:0; right:0; z-index:2;">
+            <img id="slide-tr" src="photos\foto_proper\pisang.jpg"
+                class="w-full h-full object-cover slide-img"/>
           </div>
-          <div class="rounded-2xl overflow-hidden shadow-lg mt-6 sm:mt-8" style="aspect-ratio:1;">
-            <!-- Replace: foto produk segar -->
-            <img src="photos\buah_segar.jpg" alt="Produk Segar" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" class="w-full h-full object-cover"/>
-            <div class="img-placeholder w-full h-full" style="display:none; min-height:130px;">
-              <p class="z-10 text-xs opacity-60">Foto produk segar</p>
-            </div>
+
+          <!-- Small frame bottom-left -->
+          <div class="absolute rounded-2xl overflow-hidden shadow-xl border-4 border-white"
+              style="width:35%; height:44%; bottom:0; left:0; z-index:2;">
+            <img id="slide-bl" src="photos\tim operasional sayur.jpg"
+                class="w-full h-full object-cover slide-img"/>
           </div>
-          <div class="rounded-2xl overflow-hidden shadow-lg" style="aspect-ratio:1; col-span:2;">
-            <!-- Replace: foto tim / operasional -->
-            <img src="photos\tim operasional sayur.jpg" alt="Operasional" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" class="w-full h-full object-cover"/>
-            <div class="img-placeholder w-full h-full" style="display:none; min-height:130px;">
-              <p class="z-10 text-xs opacity-60">Foto operasional / tim</p>
-            </div>
+
+          <!-- Big frame bottom-right -->
+          <div class="absolute rounded-3xl overflow-hidden shadow-2xl border-4 border-white"
+              style="width:62%; height:55%; bottom:0; right:0; z-index:2;">
+            <img id="slide-br" src="photos\foto_proper\distribusi2.png"
+                class="w-full h-full object-cover slide-img"/>
           </div>
-          <div class="rounded-2xl overflow-hidden shadow-lg -mt-6 sm:-mt-8" style="aspect-ratio:1;">
-            <!-- Replace: foto pengiriman -->
-            <img src="photos\foto_proper\distribusi2.png" alt="Pengiriman" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" class="w-full h-full object-cover"/>
-            <div class="img-placeholder w-full h-full" style="display:none; min-height:130px;">
-              <p class="z-10 text-xs opacity-60">Foto pengiriman</p>
-            </div>
+
+
+
+          <!-- Dot indicators -->
+          <div class="absolute flex gap-2 z-10" style="bottom:-28px; left:50%; transform:translateX(-50%);">
+            <span class="slide-dot w-2 h-2 rounded-full cursor-pointer transition-all" 
+                  style="background:#005DCE;" onclick="goSlide(0)"></span>
+            <span class="slide-dot w-2 h-2 rounded-full cursor-pointer transition-all opacity-30" 
+                  style="background:#005DCE;" onclick="goSlide(1)"></span>
+            <span class="slide-dot w-2 h-2 rounded-full cursor-pointer transition-all opacity-30" 
+                  style="background:#005DCE;" onclick="goSlide(2)"></span>
           </div>
         </div>
       </div>
@@ -711,6 +729,62 @@ const counterObserver = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.5 });
 document.querySelectorAll('.counter').forEach(el => counterObserver.observe(el));
+
+const slideGroups = [
+  {
+    main: "photos\\foto_proper\\Gudang.png",
+    tr:   "photos\\foto_proper\\pisang.jpg",
+    bl:   "photos\\tim operasional sayur.jpg",
+    br:   "photos\\foto_proper\\distribusi2.png"
+  },
+  {
+    main: "photos\\foto_proper\\distribusi.png",
+    tr:   "photos\\foto_proper\\Gudang.png",
+    bl:   "photos\\foto_proper\\distribusi2.png",
+    br:   "photos\\tim operasional sayur.jpg"
+  },
+  {
+    main: "photos\\foto_proper\\gudang_pisang.png",
+    tr:   "photos\\foto_proper\\foto_susu_kotak.jpg",
+    bl:   "photos\\foto_proper\\gudang2.png",
+    br:   "photos\\foto_proper\\Gudang.png"
+  }
+];
+
+let currentSlide = 0;
+
+function goSlide(idx) {
+  currentSlide = idx;
+  const imgs = [
+    { el: document.getElementById('slide-main'), src: slideGroups[idx].main },
+    { el: document.getElementById('slide-tr'),   src: slideGroups[idx].tr   },
+    { el: document.getElementById('slide-bl'),   src: slideGroups[idx].bl   },
+    { el: document.getElementById('slide-br'),   src: slideGroups[idx].br   },
+  ];
+
+  // Fade out semua
+  imgs.forEach(({ el }) => el.classList.add('fading'));
+
+  setTimeout(() => {
+    // Ganti src saat transparan
+    imgs.forEach(({ el, src }) => el.src = src);
+
+    // Fade in
+    imgs.forEach(({ el }) => el.classList.remove('fading'));
+  }, 380);
+
+  // Update dots
+  document.querySelectorAll('.slide-dot').forEach((dot, i) => {
+    dot.style.opacity = i === idx ? '1' : '0.3';
+    dot.style.transform = i === idx ? 'scale(1.4)' : 'scale(1)';
+  });
+}
+
+setInterval(() => {
+  const randomIndex = Math.floor(Math.random() * slideGroups.length);
+  goSlide(randomIndex);
+}, 2000);
+
 </script>
 </body>
 </html>
