@@ -319,10 +319,13 @@
         </div>
         <div class="text-xs sm:text-sm text-gray-500 font-bold uppercase tracking-wider">Retensi Klien</div>
       </div>
-      <div class="stat-card p-5 sm:p-8 text-center reveal" style="transition-delay:0.3s">
-        <div class="text-3xl sm:text-4xl font-bold mb-2" style="color:#005DCE">95%</div>
+      <div class="stat-card p-5 sm:p-8 text-center reveal" style="transition-delay:0.2s">
+        <div class="text-3xl sm:text-4xl font-bold mb-2" style="color:#005DCE">
+          <span class="counter" data-target="95">0</span>%
+        </div>
         <div class="text-xs sm:text-sm text-gray-500 font-bold uppercase tracking-wider">Pengiriman Tepat Waktu</div>
       </div>
+
     </div>
   </div>
 </section>
@@ -780,7 +783,7 @@ function goSlide(idx) {
   });
 }
 
-setInterval(() => goSlide((currentSlide + 1) % slideGroups.length), 2000);
+setInterval(() => goSlide((currentSlide + 1) % slideGroups.length), 2500);
 
 </script>
 </body>
