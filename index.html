@@ -50,13 +50,6 @@
     .hero-img-box:hover { transform: perspective(900px) rotateY(0deg) rotateX(0deg); }
 
     /* ── Animated counters ── */
-    /* Carousel fade transition */
-    .slide-img {
-      transition: opacity 0.4s ease;
-    }
-    .slide-img.fading {
-      opacity: 0;
-    }
     .stat-card {
       background: white;
       border-radius: 20px;
@@ -166,7 +159,6 @@
       .hero-img-box {
         transform: perspective(900px) rotateY(-3deg) rotateX(1.5deg);
       }
-
       .hero-img-box:hover {
         transform: perspective(900px) rotateY(-2deg) rotateX(1deg);
       }
@@ -178,6 +170,163 @@
         height: 320px;
       }
     }
+
+    /* ════════════════════════════════════════
+       PROFESSIONAL CAROUSEL STYLES
+    ════════════════════════════════════════ */
+
+    .pro-carousel-wrapper {
+      position: relative;
+      width: 100%;
+    }
+
+    /* Main image frame */
+    .pro-carousel-main {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0, 93, 206, 0.18);
+      background: #E4F5FE;
+    }
+
+    .pro-carousel-main img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity 0.55s ease;
+      pointer-events: none;
+    }
+    .pro-carousel-main img.active {
+      opacity: 1;
+    }
+
+    /* Caption overlay */
+    .pro-carousel-caption {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 20px 24px 18px;
+      background: linear-gradient(to top, rgba(0,30,80,0.72) 0%, transparent 100%);
+      color: white;
+      transform: translateY(4px);
+      opacity: 0;
+      transition: opacity 0.4s ease, transform 0.4s ease;
+      pointer-events: none;
+      z-index: 4;
+    }
+    .pro-carousel-main:hover .pro-carousel-caption {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .pro-carousel-caption .cap-label {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #79AFFF;
+      margin-bottom: 3px;
+    }
+    .pro-carousel-caption .cap-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      line-height: 1.3;
+    }
+
+    /* Arrow buttons */
+    .carousel-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 5;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.92);
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+      transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+      backdrop-filter: blur(6px);
+    }
+    .carousel-arrow:hover {
+      background: #005DCE;
+      transform: translateY(-50%) scale(1.08);
+      box-shadow: 0 6px 24px rgba(0,93,206,0.35);
+    }
+    .carousel-arrow:hover svg { stroke: white; }
+    .carousel-arrow.prev { left: 14px; }
+    .carousel-arrow.next { right: 14px; }
+    .carousel-arrow svg { stroke: #005DCE; transition: stroke 0.2s; }
+
+    /* Thumbnail strip */
+    .pro-carousel-thumbs {
+      display: flex;
+      gap: 10px;
+      margin-top: 14px;
+      padding: 2px 0;
+    }
+
+    .pro-carousel-thumb {
+      flex: 1;
+      aspect-ratio: 16 / 10;
+      border-radius: 10px;
+      overflow: hidden;
+      cursor: pointer;
+      border: 2.5px solid transparent;
+      transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      background: #E4F5FE;
+      position: relative;
+    }
+    .pro-carousel-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.35s ease;
+    }
+    .pro-carousel-thumb:hover img {
+      transform: scale(1.06);
+    }
+    .pro-carousel-thumb.active {
+      border-color: #005DCE;
+      box-shadow: 0 4px 18px rgba(0,93,206,0.28);
+      transform: translateY(-2px);
+    }
+    .pro-carousel-thumb::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0,93,206,0.0);
+      transition: background 0.25s;
+      border-radius: 8px;
+    }
+    .pro-carousel-thumb.active::after {
+      background: rgba(0,93,206,0.08);
+    }
+
+    /* Badge accent on main */
+    .carousel-slide-counter {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      z-index: 5;
+      background: rgba(255,255,255,0.88);
+      backdrop-filter: blur(6px);
+      border-radius: 20px;
+      padding: 4px 12px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: #005DCE;
+      letter-spacing: 0.06em;
+    }
   </style>
 </head>
 <body class="bg-white text-gray-900 overflow-x-hidden">
@@ -188,9 +337,7 @@
 <!-- ═══════════════════ NAVBAR ═══════════════════ -->
 <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 px-4 sm:px-6 py-2">
   <div class="max-w-7xl mx-auto flex items-center justify-between">
-    <!-- Logo -->
     <a href="index.html" class="flex items-center gap-2 sm:gap-3">
-      <!-- Replace src with your logo path -->
       <img src="photos\logo.png" alt="Sentra Niaga Universal"
            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
            class="h-20 w-auto" />
@@ -200,12 +347,10 @@
       </span>
     </a>
 
-    <!-- Desktop Menu -->
     <div class="hidden md:flex items-center gap-6 lg:gap-8 text-sm font-bold text-gray-700">
       <a href="index.html" class="hover:text-[#005DCE] transition-colors">Beranda</a>
       <a href="about.html" class="hover:text-[#005DCE] transition-colors">Tentang Kami</a>
       <a href="layanan.html" class="hover:text-[#005DCE] transition-colors">Layanan</a>
-      
       <a href="kontak.html"
          class="px-4 lg:px-5 py-2 lg:py-2.5 rounded-full text-white text-sm font-bold transition-all hover:shadow-lg hover:scale-105"
          style="background:#005DCE">
@@ -213,7 +358,6 @@
       </a>
     </div>
 
-    <!-- Mobile Hamburger -->
     <button id="hamburger" class="md:hidden p-2" onclick="toggleMenu()">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#005DCE" stroke-width="2.5" stroke-linecap="round">
         <line x1="3" y1="6" x2="21" y2="6"/>
@@ -223,25 +367,21 @@
     </button>
   </div>
 
-  <!-- Mobile Menu -->
   <div id="mobile-menu" class="flex-col gap-4 px-6 pt-4 pb-6 md:hidden bg-white shadow-xl rounded-b-2xl mt-2">
     <a href="index.html" class="font-bold text-gray-700 hover:text-[#005DCE]">Beranda</a>
     <a href="about.html" class="font-bold text-gray-700 hover:text-[#005DCE]">Tentang Kami</a>
     <a href="layanan.html" class="font-bold text-gray-700 hover:text-[#005DCE]">Layanan</a>
-    
     <a href="kontak.html" class="px-5 py-2.5 rounded-full text-white font-bold text-center" style="background:#005DCE">Hubungi Kami</a>
   </div>
 </nav>
 
 <!-- ═══════════════════ HERO ═══════════════════ -->
 <section class="hero-bg min-h-screen flex items-center pt-20 sm:pt-30 pb-16 relative">
-  <!-- Blobs -->
   <div class="blob w-48 h-48 sm:w-96 sm:h-96" style="background:#F3CF31;top:-80px;right:10%;"></div>
   <div class="blob w-32 h-32 sm:w-64 sm:h-64" style="background:#079844;bottom:0;left:5%;"></div>
 
   <div class="max-w-7xl mx-auto px-4 sm:px-6 w-full">
     <div class="grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center">
-      <!-- Text -->
       <div style="animation: fadeSlideUp 0.9s ease both;">
         <div class="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs font-bold mb-4 sm:mb-6 uppercase tracking-widest"
              style="background:rgba(255,255,255,0.15);color:white;backdrop-filter:blur(8px);">
@@ -253,7 +393,7 @@
           <span style="color:#F3CF31">Dengan Satu Sistem Terpadu</span>
         </h1>
         <p class="text-base sm:text-lg text-blue-100 mb-7 sm:mb-10 max-w-lg leading-relaxed">
-            Sempurnakan kebutuhan bahan baku dapur anda melalui layanan terpadu kami. Kami hadir untuk memastikan pasokan bahan baku berkualitas sampai tepat waktu dan efisien agar operasional dapur anda selalu optimal. 
+            Sempurnakan kebutuhan bahan baku dapur anda melalui layanan terpadu kami. Kami hadir untuk memastikan pasokan bahan baku berkualitas sampai tepat waktu dan efisien agar operasional dapur anda selalu optimal.
         </p>
         <div class="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4">
           <a href="kontak.html"
@@ -268,10 +408,8 @@
         </div>
       </div>
 
-      <!-- Hero Image -->
       <div class="mt-8 lg:mt-0" style="animation: fadeSlideLeft 1s ease 0.3s both;">
         <div class="hero-img-box w-full" style="aspect-ratio:4/3;">
-          <!-- Replace src below with your hero image path, e.g. src="/assets/hero-warehouse.jpg" -->
           <img src="photos\foto_proper\banner.png"
                alt="Distribusi Bahan Baku Sentra Niaga"
                onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"
@@ -287,7 +425,6 @@
     </div>
   </div>
 
-  <!-- Scroll cue -->
   <div class="absolute bottom-6 sm:bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white opacity-60"
        style="animation: bounce 2s infinite;">
     <span class="text-xs tracking-widest uppercase">Scroll</span>
@@ -325,19 +462,16 @@
         </div>
         <div class="text-xs sm:text-sm text-gray-500 font-bold uppercase tracking-wider">Pengiriman Tepat Waktu</div>
       </div>
-
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════ INTRO SECTION + NATURE IMAGE ═══════════════════ -->
+<!-- ═══════════════════ INTRO SECTION ═══════════════════ -->
 <section class="py-16 sm:py-24 px-4 sm:px-6 bg-white">
   <div class="max-w-7xl mx-auto">
     <div class="grid lg:grid-cols-2 gap-10 sm:gap-16 lg:gap-20 items-center">
-      <!-- Image collage -->
       <div class="relative reveal">
         <div class="rounded-3xl overflow-hidden shadow-2xl" style="aspect-ratio:4/3;">
-          <!-- Replace src: gambar petani/alam/bahan baku -->
           <img src="photos\foto_proper\distribusi.png"
                alt="Petani Bahan Baku"
                onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"
@@ -349,13 +483,11 @@
             </div>
           </div>
         </div>
-        <!-- Floating accent card -->
         <div class="absolute -bottom-4 sm:-bottom-6 -right-2 sm:-right-6 p-3 sm:p-5 rounded-2xl shadow-2xl"
              style="background:#005DCE; color:white; min-width:140px;">
           <div class="text-lg sm:text-2xl font-bold">Jabodetabek</div>
           <div class="text-xs opacity-80 mt-1 tracking-wider uppercase">Area Distribusi</div>
         </div>
-        <!-- Small badge -->
         <div class="absolute -top-3 sm:-top-4 -left-3 sm:-left-4 w-14 h-14 sm:w-20 sm:h-20 rounded-full flex items-center justify-center shadow-xl text-center"
              style="background:#F3CF31;">
           <div>
@@ -365,7 +497,6 @@
         </div>
       </div>
 
-      <!-- Text -->
       <div class="reveal mt-8 lg:mt-0" style="transition-delay:0.2s">
         <p class="text-xs font-bold uppercase tracking-widest mb-4" style="color:#005DCE">Tentang Kami</p>
         <h2 class="text-3xl sm:text-4xl font-bold mb-6 leading-tight">
@@ -398,13 +529,11 @@
     </div>
 
     <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
-      <!-- Card 1 -->
       <div class="feature-card p-6 sm:p-8 reveal">
         <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl flex items-center justify-center mb-5 sm:mb-6" style="background:#E4F5FE">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#005DCE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            
             <path d="M16 8c1.5-2 4-2 4-2s0 3-2 4"/>
-            <path d="M12 7c-3-3-7 0-7 5 0 5 4 9 7 9s7-4 7-9c0-5-4-8-7-5z"/> 
+            <path d="M12 7c-3-3-7 0-7 5 0 5 4 9 7 9s7-4 7-9c0-5-4-8-7-5z"/>
             <path d="M12 4v3"/>
             <path d="M13 4c1-2 4-2 4-2s0 3-2 4"/>
           </svg>
@@ -416,7 +545,6 @@
         </a>
       </div>
 
-      <!-- Card 2 -->
       <div class="feature-card p-6 sm:p-8 reveal" style="transition-delay:0.15s">
         <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl flex items-center justify-center mb-5 sm:mb-6" style="background:#E4F5FE">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#005DCE" stroke-width="2" stroke-linecap="round">
@@ -433,7 +561,6 @@
         </a>
       </div>
 
-      <!-- Card 3 -->
       <div class="feature-card p-6 sm:p-8 reveal sm:col-span-2 md:col-span-1" style="transition-delay:0.3s">
         <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl flex items-center justify-center mb-5 sm:mb-6" style="background:#E4F5FE">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#005DCE" stroke-width="2" stroke-linecap="round">
@@ -450,9 +577,8 @@
   </div>
 </section>
 
-<!-- ═══════════════════ NATURE STRIP (Pulau / Alam) ═══════════════════ -->
+<!-- ═══════════════════ NATURE STRIP ═══════════════════ -->
 <section class="relative overflow-hidden nature-strip-height" style="height: 420px;">
-  <!-- Replace src: foto pulau / pemandangan alam / kebun -->
   <img src="photos\foto_proper\new_pulau _jawa.jpg"
        alt="Keindahan Alam Indonesia"
        onerror="this.style.display='none';this.nextElementSibling.style.display='block';"
@@ -463,7 +589,6 @@
       <p class="opacity-60 text-sm">Ganti src dengan foto pulau / alam Indonesia</p>
     </div>
   </div>
-  <!-- Overlay -->
   <div class="absolute inset-0" style="background:linear-gradient(to right, rgba(0,93,206,0.75) 0%, rgba(0,93,206,0.2) 60%, transparent 100%);"></div>
   <div class="absolute inset-0 flex items-center px-6 sm:px-12 lg:px-24">
     <div class="max-w-lg">
@@ -474,10 +599,12 @@
   </div>
 </section>
 
-<!-- ═══════════════════ KEUNGGULAN ═══════════════════ -->
+<!-- ═══════════════════ KEUNGGULAN + PROFESSIONAL CAROUSEL ═══════════════════ -->
 <section class="py-16 sm:py-24 px-4 sm:px-6 bg-white">
   <div class="max-w-7xl mx-auto">
     <div class="grid lg:grid-cols-2 gap-10 sm:gap-16 lg:gap-20 items-center">
+
+      <!-- Left: Keunggulan text -->
       <div class="reveal">
         <p class="text-xs font-bold uppercase tracking-widest mb-4" style="color:#079844">Keunggulan Kami</p>
         <h2 class="text-3xl sm:text-4xl font-bold mb-8 sm:mb-10 leading-tight">Mengapa Memilih<br/><span style="color:#005DCE">Sentra Niaga Universal?</span></h2>
@@ -521,51 +648,75 @@
           </div>
         </div>
       </div>
-      <!-- Image Carousel -->
-             <div class="reveal mt-8 lg:mt-0" style="transition-delay:0.2s">
-        <div class="relative" style="height: 480px;">
-          
-          <!-- Main big frame (top-left) -->
-          <div class="absolute rounded-3xl overflow-hidden shadow-2xl border-4 border-white"
-              style="width:62%; height:62%; top:0; left:0; z-index:2;">
-            <img id="slide-main" src="photos\foto_proper\Gudang.png"
-                class="w-full h-full object-cover slide-img"/>
+
+      <!-- Right: Professional Carousel -->
+      <div class="reveal mt-8 lg:mt-0" style="transition-delay:0.2s">
+        <div class="pro-carousel-wrapper">
+
+          <!-- Main Image Display -->
+          <div class="pro-carousel-main" id="carouselMain">
+
+            <!-- Slides (all stacked, opacity controlled) -->
+            <img class="active" src="photos\foto_proper\Gudang.png"        alt="Gudang Sentra Niaga" data-label="Fasilitas" data-title="Gudang Distribusi Modern" />
+            <img             src="photos\foto_proper\distribusi.png"       alt="Distribusi"          data-label="Operasional" data-title="Proses Distribusi Harian" />
+          <img 
+            src="photos/foto_proper/susu.jpg"
+            alt="Bahan Baku Segar"
+            data-label="Bahan Baku Segar" data-title="Memberikan Bahan Baku Terbaik"
+            style="width: 100%; height: auto; object-fit: contain;"
+          />
+            <img             src="photos\tim operasional sayur.jpg"        alt="Tim Operasional"     data-label="Tim" data-title="Tim Operasional Profesional" />
+            <img             src="photos\foto_proper\distribusi2.png"      alt="Pengiriman"          data-label="Pengiriman" data-title="Pengiriman Tepat Waktu" />
+            <img             src="photos\foto_proper\foto_susu_kotak.jpg"  alt="Produk Susu"         data-label="Produk" data-title="Susu UHT & Produk Olahan" />
+
+            <!-- Slide counter badge -->
+            <div class="carousel-slide-counter" id="slideCounter">1 / 6</div>
+
+            <!-- Caption overlay (shown on hover) -->
+            <div class="pro-carousel-caption" id="carouselCaption">
+              <div class="cap-label" id="capLabel">Fasilitas</div>
+              <div class="cap-title" id="capTitle">Gudang Distribusi Modern</div>
+            </div>
+
+            <!-- Arrow buttons -->
+            <button class="carousel-arrow prev" onclick="carouselMove(-1)" aria-label="Previous">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="15 18 9 12 15 6"/>
+              </svg>
+            </button>
+            <button class="carousel-arrow next" onclick="carouselMove(1)" aria-label="Next">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="9 18 15 12 9 6"/>
+              </svg>
+            </button>
           </div>
 
-          <!-- Small frame top-right -->
-          <div class="absolute rounded-2xl overflow-hidden shadow-xl border-4 border-white"
-              style="width:35%; height:44%; top:0; right:0; z-index:2;">
-            <img id="slide-tr" src="photos\foto_proper\pisang.jpg"
-                class="w-full h-full object-cover slide-img"/>
+          <!-- Thumbnail Strip -->
+          <div class="pro-carousel-thumbs" id="carouselThumbs">
+            <div class="pro-carousel-thumb active" onclick="carouselGoTo(0)">
+              <img src="photos\foto_proper\Gudang.png" alt="Gudang" />
+            </div>
+            <div class="pro-carousel-thumb" onclick="carouselGoTo(1)">
+              <img src="photos\foto_proper\distribusi.png" alt="Distribusi" />
+            </div>
+            <div class="pro-carousel-thumb" onclick="carouselGoTo(2)">
+              <img src="photos\foto_proper\susu.jpg" alt="Pisang" />
+            </div>
+            <div class="pro-carousel-thumb" onclick="carouselGoTo(3)">
+              <img src="photos\tim operasional sayur.jpg" alt="Tim" />
+            </div>
+            <div class="pro-carousel-thumb" onclick="carouselGoTo(4)">
+              <img src="photos\foto_proper\distribusi2.png" alt="Distribusi 2" />
+            </div>
+            <div class="pro-carousel-thumb" onclick="carouselGoTo(5)">
+              <img src="photos\foto_proper\foto_susu_kotak.jpg" alt="Susu" />
+            </div>
           </div>
 
-          <!-- Small frame bottom-left -->
-          <div class="absolute rounded-2xl overflow-hidden shadow-xl border-4 border-white"
-              style="width:35%; height:44%; bottom:0; left:0; z-index:2;">
-            <img id="slide-bl" src="photos\tim operasional sayur.jpg"
-                class="w-full h-full object-cover slide-img"/>
-          </div>
-
-          <!-- Big frame bottom-right -->
-          <div class="absolute rounded-3xl overflow-hidden shadow-2xl border-4 border-white"
-              style="width:62%; height:55%; bottom:0; right:0; z-index:2;">
-            <img id="slide-br" src="photos\foto_proper\distribusi2.png"
-                class="w-full h-full object-cover slide-img"/>
-          </div>
-
-
-
-          <!-- Dot indicators -->
-          <div class="absolute flex gap-2 z-10" style="bottom:-28px; left:50%; transform:translateX(-50%);">
-            <span class="slide-dot w-2 h-2 rounded-full cursor-pointer transition-all" 
-                  style="background:#005DCE;" onclick="goSlide(0)"></span>
-            <span class="slide-dot w-2 h-2 rounded-full cursor-pointer transition-all opacity-30" 
-                  style="background:#005DCE;" onclick="goSlide(1)"></span>
-            <span class="slide-dot w-2 h-2 rounded-full cursor-pointer transition-all opacity-30" 
-                  style="background:#005DCE;" onclick="goSlide(2)"></span>
-          </div>
         </div>
       </div>
+      <!-- end carousel col -->
+
     </div>
   </div>
 </section>
@@ -631,24 +782,35 @@
     <div class="grid sm:grid-cols-2 md:grid-cols-4 gap-8 sm:gap-10 mb-10 sm:mb-12">
       <div class="sm:col-span-2">
         <div class="flex items-center gap-3 mb-5">
-        <img src="photos/logo.png" alt="Logo"
-            onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"
-            class="h-24 w-auto"/>
-
-        <span style="display:none" class="items-center gap-2">
+          <img src="photos/logo.png" alt="Logo"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"
+               class="h-24 w-auto"/>
+          <span style="display:none" class="items-center gap-2">
             <span class="text-xl font-bold text-white">SENTRA</span>
             <span class="text-xl font-bold" style="color:#79AFFF">NIAGA</span>
-        </span>
+          </span>
         </div>
         <p class="text-sm leading-relaxed max-w-xs mb-5">
             Strategic Supply Partner untuk dapur skala besar. Sempurnakan Kebutuhan Bahan Baku Anda, Dengan Sentra Niaga.
         </p>
-        <a href="https://wa.me/6288971916535" target="_blank"
-           class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-bold text-white"
-           style="background:#079844">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
-          Chat WhatsApp
-        </a>
+        <div class="flex flex-wrap gap-3">
+          <a href="https://wa.me/6288971916535" target="_blank"
+             class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-bold text-white transition-all hover:scale-105"
+             style="background:#079844">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+            Chat WhatsApp
+          </a>
+          <a href="https://www.instagram.com/sentraniaga.id/" target="_blank"
+             class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-bold text-white transition-all hover:scale-105"
+             style="background: linear-gradient(135deg, #833ab4 0%, #fd1d1d 50%, #fcb045 100%);">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+              <circle cx="12" cy="12" r="4"/>
+              <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/>
+            </svg>
+            Cek Instagram Kami
+          </a>
+        </div>
       </div>
       <div>
         <div class="font-bold text-white mb-4 text-sm uppercase tracking-wider">Navigasi</div>
@@ -656,7 +818,6 @@
           <li><a href="index.html" class="hover:text-white transition-colors">Beranda</a></li>
           <li><a href="about.html" class="hover:text-white transition-colors">Tentang Kami</a></li>
           <li><a href="layanan.html" class="hover:text-white transition-colors">Layanan</a></li>
-         
           <li><a href="kontak.html" class="hover:text-white transition-colors">Kontak</a></li>
         </ul>
       </div>
@@ -673,7 +834,7 @@
           </li>
           <li class="flex items-center gap-2">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-            sentrauniversaltrade@gmail.com
+            <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="2c5f4942585e4d5942455a495e5f4d40585e4d48496c4b414d4540024f4341">[email&#160;protected]</a>
           </li>
         </ul>
       </div>
@@ -685,106 +846,114 @@
   </div>
 </footer>
 
+<!-- ══════════════════════════════════════════════════
+     ANIMATIONS & SCRIPTS
+══════════════════════════════════════════════════ -->
 <style>
-@keyframes fadeSlideUp { from { opacity:0; transform:translateY(40px);} to {opacity:1; transform:translateY(0);} }
-@keyframes fadeSlideLeft { from { opacity:0; transform:translateX(40px);} to {opacity:1; transform:translateX(0);} }
-@keyframes bounce { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(-8px)} }
+  @keyframes fadeSlideUp   { from { opacity:0; transform:translateY(40px);  } to { opacity:1; transform:translateY(0);  } }
+  @keyframes fadeSlideLeft { from { opacity:0; transform:translateX(40px);  } to { opacity:1; transform:translateX(0);  } }
+  @keyframes bounce        { 0%,100%{ transform:translateX(-50%) translateY(0); } 50%{ transform:translateX(-50%) translateY(-8px); } }
 </style>
 
 <script>
-// Navbar scroll effect
+/* ─── Navbar scroll ─── */
 window.addEventListener('scroll', () => {
   const nav = document.getElementById('navbar');
-  if (window.scrollY > 50) nav.classList.add('scrolled');
-  else nav.classList.remove('scrolled');
-  // Progress bar
+  nav.classList.toggle('scrolled', window.scrollY > 50);
   const doc = document.documentElement;
-  const pct = (window.scrollY / (doc.scrollHeight - doc.clientHeight)) * 100;
-  document.getElementById('progress-bar').style.width = pct + '%';
+  document.getElementById('progress-bar').style.width =
+    (window.scrollY / (doc.scrollHeight - doc.clientHeight) * 100) + '%';
 });
 
-// Mobile menu toggle
+/* ─── Mobile menu ─── */
 function toggleMenu() {
   document.getElementById('mobile-menu').classList.toggle('open');
 }
 
-// Reveal on scroll
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-}, { threshold: 0.12 });
+/* ─── Reveal on scroll ─── */
+const observer = new IntersectionObserver(
+  entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
+  { threshold: 0.12 }
+);
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-// Animated counters
-const counterObserver = new IntersectionObserver((entries) => {
+/* ─── Animated counters ─── */
+const counterObserver = new IntersectionObserver(entries => {
   entries.forEach(e => {
-    if (e.isIntersecting) {
-      const el = e.target;
-      const target = +el.dataset.target;
-      let count = 0;
-      const step = Math.ceil(target / 60);
-      const timer = setInterval(() => {
-        count = Math.min(count + step, target);
-        el.textContent = count;
-        if (count >= target) clearInterval(timer);
-      }, 25);
-      counterObserver.unobserve(el);
-    }
+    if (!e.isIntersecting) return;
+    const el = e.target;
+    const target = +el.dataset.target;
+    let count = 0;
+    const step = Math.ceil(target / 60);
+    const timer = setInterval(() => {
+      count = Math.min(count + step, target);
+      el.textContent = count;
+      if (count >= target) clearInterval(timer);
+    }, 25);
+    counterObserver.unobserve(el);
   });
 }, { threshold: 0.5 });
 document.querySelectorAll('.counter').forEach(el => counterObserver.observe(el));
 
-const slideGroups = [
-  {
-    main: "photos\\foto_proper\\Gudang.png",
-    tr:   "photos\\foto_proper\\pisang.jpg",
-    bl:   "photos\\tim operasional sayur.jpg",
-    br:   "photos\\foto_proper\\distribusi2.png"
-  },
-  {
-    main: "photos\\foto_proper\\distribusi.png",
-    tr:   "photos\\foto_proper\\Gudang.png",
-    bl:   "photos\\foto_proper\\gudang2.png",
-    br:   "photos\\foto_proper\\foto_susu_kotak.jpg"
-  },
-  {
-    main: "photos\\foto_proper\\gudang_pisang.png",
-    tr:   "photos\\foto_proper\\foto_susu_kotak.jpg",
-    bl:   "photos\\foto_proper\\gudang2.png",
-    br:   "photos\\foto_proper\\Gudang.png"
+/* ════════════════════════════════════════
+   PROFESSIONAL CAROUSEL LOGIC
+════════════════════════════════════════ */
+(function () {
+  const mainEl   = document.getElementById('carouselMain');
+  const slides   = Array.from(mainEl.querySelectorAll('img'));
+  const thumbs   = Array.from(document.getElementById('carouselThumbs').querySelectorAll('.pro-carousel-thumb'));
+  const counter  = document.getElementById('slideCounter');
+  const capLabel = document.getElementById('capLabel');
+  const capTitle = document.getElementById('capTitle');
+  const total    = slides.length;
+  let current    = 0;
+  let autoTimer  = null;
+
+  const strip = document.getElementById('carouselThumbs'); // pindah ke sini, sejajar dengan deklarasi slides/thumbs
+
+  function goTo(idx) {
+    slides[current].classList.remove('active');
+    thumbs[current].classList.remove('active');
+
+    current = (idx + total) % total;
+
+    slides[current].classList.add('active');
+    thumbs[current].classList.add('active');
+
+    counter.textContent  = (current + 1) + ' / ' + total;
+    capLabel.textContent = slides[current].dataset.label || '';
+    capTitle.textContent = slides[current].dataset.title || '';
+
+    const thumb      = thumbs[current];
+    const thumbLeft  = thumb.offsetLeft;
+    const thumbWidth = thumb.offsetWidth;
+    const stripLeft  = strip.scrollLeft;
+    const stripWidth = strip.offsetWidth;
+    if (thumbLeft < stripLeft || thumbLeft + thumbWidth > stripLeft + stripWidth) {
+      strip.scrollTo({ left: thumbLeft - stripWidth / 2 + thumbWidth / 2, behavior: 'smooth' });
+    }
   }
-];
 
-let currentSlide = 0;
+  function startAuto() {
+    autoTimer = setInterval(() => goTo(current + 1), 3500);
+  }
+  function resetAuto() {
+    clearInterval(autoTimer);
+    startAuto();
+  }
 
-function goSlide(idx) {
-  currentSlide = idx;
-  const imgs = [
-    { el: document.getElementById('slide-main'), src: slideGroups[idx].main },
-    { el: document.getElementById('slide-tr'),   src: slideGroups[idx].tr   },
-    { el: document.getElementById('slide-bl'),   src: slideGroups[idx].bl   },
-    { el: document.getElementById('slide-br'),   src: slideGroups[idx].br   },
-  ];
+  // Exposed globally for inline onclick
+  window.carouselMove  = function (dir) { goTo(current + dir); resetAuto(); };
+  window.carouselGoTo  = function (idx) { goTo(idx);           resetAuto(); };
 
-  // Fade out semua
-  imgs.forEach(({ el }) => el.classList.add('fading'));
-
-  setTimeout(() => {
-    // Ganti src saat transparan
-    imgs.forEach(({ el, src }) => el.src = src);
-
-    // Fade in
-    imgs.forEach(({ el }) => el.classList.remove('fading'));
-  }, 380);
-
-  // Update dots
-  document.querySelectorAll('.slide-dot').forEach((dot, i) => {
-    dot.style.opacity = i === idx ? '1' : '0.3';
-    dot.style.transform = i === idx ? 'scale(1.4)' : 'scale(1)';
+  // Keyboard support
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowLeft')  { carouselMove(-1); }
+    if (e.key === 'ArrowRight') { carouselMove(1);  }
   });
-}
 
-setInterval(() => goSlide((currentSlide + 1) % slideGroups.length), 2500);
-
+  startAuto();
+})();
 </script>
 </body>
 </html>
