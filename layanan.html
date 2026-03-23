@@ -211,7 +211,7 @@
       </div>
       <div class="reveal" style="transition-delay:0.2s">
         <div class="product-card" style="aspect-ratio:4/3; position:relative; overflow:hidden;">
-          <img id="prod-slide" src="photos\foto_proper\foto_susu_kotak.jpg"
+          <img id="prod-slide" src="photos\foto_proper\susu.jpg"
               alt="Produk Bahan Baku"
               class="w-full h-full object-cover slide-img"/>
 
@@ -464,7 +464,7 @@ window.addEventListener('scroll', () => {
 const obs = new IntersectionObserver(e => e.forEach(x => { if(x.isIntersecting) x.target.classList.add('visible'); }), {threshold:0.12});
 document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 const prodSlides = [
-  "photos\\foto_proper\\foto_susu_kotak.jpg",
+  "photos\\foto_proper\\susu.jpg",
   "photos\\foto_proper\\foto jeruk.png",
   "photos\\foto_proper\\nampan.jpeg"
 ];
